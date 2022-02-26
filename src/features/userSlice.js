@@ -29,10 +29,12 @@ export const userSlice = createSlice({
     },
 
     logout(state) {
-        localStorage.removeItem("accessToken")
-        localStorage.removeItem("username")
-        localStorage.removeItem("user_id")
-        state.isToken = null
+        if(window.confirm('Are you sure?')) {
+          localStorage.removeItem("accessToken")
+          localStorage.removeItem("username")
+          localStorage.removeItem("user_id")
+          state.isToken = null
+        }
     }
   },
 })

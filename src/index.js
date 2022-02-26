@@ -21,16 +21,16 @@ import EyeForm from './components/EyeForm/EyeForm';
 
 ReactDOM.render(
   <Provider store={store}>
-    <div className='flex'>
-      <Sidebar />
-      <BrowserRouter>
-        <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='home' element={<Home />} />
-            <Route path='tableform' element={<EyeForm/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <div className='flex'>
+        <Sidebar />
+          <Routes>
+              <Route path='/' element={<Login />} />
+              <Route path='home' element={<Home />} />
+              <Route path='tableform' element={<EyeForm/>}/>
+          </Routes>
+      </div>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

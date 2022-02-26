@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../../features/userSlice'
 
 // Icons
 import { BiMenu } from 'react-icons/bi'
@@ -6,11 +11,18 @@ import { BiLogOut } from 'react-icons/bi'
 
 export const Sidebar = () => {
 
+    const navigate = useNavigate()
+
     const [isShowToggle, setIsShowToggle] = useState(false)
 
+    const dispatch = useDispatch()
+    const { isToken } = useSelector((state) => state.user)
+
     useEffect(() => {
-        
-    }, [])
+        if(!localStorage.getItem("accessToken")) {
+            navigate('/')
+        }
+    }, [isToken])
 
     if(isShowToggle) {
         return (
@@ -35,14 +47,18 @@ export const Sidebar = () => {
                     </div>
     
                     {/* Bottom */}
-                    <button className='flex items-center justify-between hover:bg-trustworthy-500 p-3'>
-                        <div className='font-semibold text-xl text-black truncate'>
-                            Logout
-                        </div>
-                        <div>
-                            <BiLogOut className='w-6 h-6'/>
-                        </div>
-                    </button>
+                    <div className='w-full'>
+                        {isToken &&
+                            <button onClick={() => dispatch(logout())} className='flex items-center w-full justify-between hover:bg-trustworthy-500 p-3'>
+                                <div className='font-semibold text-xl text-black truncate'>
+                                    Logout
+                                </div>
+                                <div>
+                                    <BiLogOut className='w-6 h-6'/>
+                                </div>
+                            </button>
+                        }
+                    </div>
                 </div>
             </nav>
         )
@@ -62,9 +78,13 @@ export const Sidebar = () => {
                     </div>
     
                     {/* Bottom */}
-                    <button className='flex w-full justify-center hover:bg-trustworthy-500 py-3'>
-                        <BiLogOut className='w-6 h-6'/>
-                    </button>
+                    <div className='w-full'>
+                        {isToken &&
+                            <button onClick={() => dispatch(logout())} className='flex w-full justify-center hover:bg-trustworthy-500 py-3'>
+                            <BiLogOut className='w-6 h-6'/>
+                            </button>
+                        }
+                    </div>
                 </div>
             </nav>
         )
