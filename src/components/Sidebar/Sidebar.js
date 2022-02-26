@@ -1,11 +1,72 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+// Icons
+import { BiMenu } from 'react-icons/bi'
+import { BiLogOut } from 'react-icons/bi'
 
 export const Sidebar = () => {
-    return (
-        <div className='min-h-screen w-64 bg-trustworthy-400'>
-            <div>
-                
+
+    const [isShowToggle, setIsShowToggle] = useState(false)
+
+    useEffect(() => {
+        
+    }, [])
+
+    if(isShowToggle) {
+        return (
+            // Full menu
+            <div className='min-h-screen w-64 bg-trustworthy-400 duration-300'>
+                <div className='flex flex-col justify-between min-h-screen'>
+                    {/* Top */}
+                    <div className='flex items-center justify-between p-3'>
+                        <div className='font-semibold text-xl text-black truncate'>
+                            EyePACS
+                        </div>
+                        <button onClick={() => setIsShowToggle(!isShowToggle)}>
+                            <BiMenu className='text-black h-6 w-6'/>
+                        </button>
+                    </div>
+    
+                    {/* Mid */}
+                    <div className='flex flex-col space-y-3'>
+                        <div className='p-3 text-xl truncate'>
+                            การแสดงผล
+                        </div>
+                    </div>
+    
+                    {/* Bottom */}
+                    <button className='flex items-center justify-between hover:bg-trustworthy-500 p-3'>
+                        <div className='font-semibold text-xl text-black truncate'>
+                            Logout
+                        </div>
+                        <div>
+                            <BiLogOut className='w-6 h-6'/>
+                        </div>
+                    </button>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            // Full menu
+            <div className='min-h-screen w-14 bg-trustworthy-400 duration-300'>
+                <div className='flex flex-col justify-between items-center min-h-screen'>
+                    {/* Top */}
+                    <button onClick={() => setIsShowToggle(!isShowToggle)} className='py-3'>
+                        <BiMenu className='text-black h-6 w-6'/>
+                    </button>
+    
+                    {/* Mid */}
+                    <div className='flex flex-col space-y-3'>
+    
+                    </div>
+    
+                    {/* Bottom */}
+                    <button className='flex w-full justify-center hover:bg-trustworthy-500 py-3'>
+                        <BiLogOut className='w-6 h-6'/>
+                    </button>
+                </div>
+            </div>
+        )
+    }
 }
