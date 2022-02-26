@@ -7,6 +7,9 @@ export const Home = () => {
     return (
         <div className='flex'>
             <Sidebar />
+            <div>
+                Content
+            </div>
         </div>
     )
 }
