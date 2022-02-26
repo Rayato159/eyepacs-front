@@ -15,7 +15,7 @@ export const Sidebar = () => {
     if(isShowToggle) {
         return (
             // Full menu
-            <div className='min-h-screen w-64 bg-trustworthy-400 duration-300'>
+            <nav className='sticky min-h-screen w-64 bg-trustworthy-400 duration-300'>
                 <div className='flex flex-col justify-between min-h-screen'>
                     {/* Top */}
                     <div className='flex items-center justify-between p-3'>
@@ -44,12 +44,12 @@ export const Sidebar = () => {
                         </div>
                     </button>
                 </div>
-            </div>
+            </nav>
         )
     } else {
         return (
             // Full menu
-            <div className='min-h-screen w-14 bg-trustworthy-400 duration-300'>
+            <nav className='sticky min-h-screen w-14 bg-trustworthy-400 duration-300'>
                 <div className='flex flex-col justify-between items-center min-h-screen'>
                     {/* Top */}
                     <button onClick={() => setIsShowToggle(!isShowToggle)} className='py-3'>
@@ -66,7 +66,7 @@ export const Sidebar = () => {
                         <BiLogOut className='w-6 h-6'/>
                     </button>
                 </div>
-            </div>
+            </nav>
         )
     }
 }
