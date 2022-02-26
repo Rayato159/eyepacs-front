@@ -16,6 +16,7 @@ import { Provider } from 'react-redux'
 // Components
 import { Login } from './pages/Login'
 import { Home } from './pages/Home'
+import EyeForm from './components/EyeForm/EyeForm';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -23,6 +24,7 @@ ReactDOM.render(
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='home' element={<Home />} />
+        <Route path='tableform' element={<EyeForm/>}/>
       </Routes>
     </BrowserRouter>
   </Provider>,
