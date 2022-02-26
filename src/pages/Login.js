@@ -55,7 +55,7 @@ export const Login = () => {
     }, [isToken])
 
     return (
-        <div className='flex h-screen items-center justify-center'>
+        <div className='flex h-screen items-center justify-center w-full'>
             <div className='w-96 h-auto'>
                 <div className='flex flex-col space-y-8 shadow-xl p-8 rounded-xl bg-white border border-gray-300'>
                     <div className='text-4xl font-bold'>

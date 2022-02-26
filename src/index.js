@@ -16,17 +16,21 @@ import { Provider } from 'react-redux'
 // Components
 import { Login } from './pages/Login'
 import { Home } from './pages/Home'
+import { Sidebar } from './components/Sidebar/Sidebar'
 import EyeForm from './components/EyeForm/EyeForm';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='home' element={<Home />} />
-        <Route path='tableform' element={<EyeForm/>}/>
-      </Routes>
-    </BrowserRouter>
+    <div className='flex'>
+      <Sidebar />
+      <BrowserRouter>
+        <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='home' element={<Home />} />
+            <Route path='tableform' element={<EyeForm/>}/>
+        </Routes>
+      </BrowserRouter>
+    </div>
   </Provider>,
   document.getElementById('root')
 );
