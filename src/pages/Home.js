@@ -30,17 +30,38 @@ export const Home = () => {
         fetchEyes(name)
     }, [])
 
-    console.log(eyes)
-
     useEffect(() => {
         if(!localStorage.getItem("accessToken")) {
             navigate('/')
         }
     }, [])
 
+    const displayEyePhotos = eyes
+        .slice(0, 10)
+        .map((eye, i) => {
+            return (
+                <tr key={eye.eye_photo_id}>
+                    <td className='p-2 text-md text-center border border-black'>{i}</td>
+                    <td className='p-2 text-md text-center border border-black'>{eye.eye_photo_id}</td>
+                    <td className='p-2 text-md text-center border border-black'>{eye.status}</td>
+                </tr>
+            )
+        })
+
     return (
-        <div>
-            Home
+        <div className='w-full'>
+            <table className='table-auto w-full text-xl'>
+                <thead>
+                    <tr className='bg-trustworthy-300'>
+                        <td className='p-3 border border-black text-center'>No.</td>
+                        <td className='p-3 border border-black text-center'>Photo ID</td>
+                        <td className='p-3 border border-black text-center'>Status</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {displayEyePhotos}
+                </tbody>
+            </table>
         </div>
     )
 }
