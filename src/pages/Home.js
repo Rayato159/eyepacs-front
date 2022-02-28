@@ -61,7 +61,7 @@ export const Home = () => {
                 <tr key={eye.eye_photo_id}>
                     <td className='p-2 text-md text-center border border-black w-20'>{i+1}</td>
                     <td className='p-2 text-md text-center border border-black'>{eye.eye_photo_id}</td>
-                    <td className='p-2 text-md text-center border border-black'>{eye.created.match(/.*(?=T)/)[0]}</td>
+                    <td className='p-2 text-md text-center border border-black w-48'>{eye.created.match(/.*(?=T)/)[0]}</td>
                     <td className='p-2 text-md text-center border border-black w-36'>
                         <div className={eye.status === 'IN_PROGRESS'? `bg-yellow-400 px-2 py-1 rounded-md animate-pulse`: `bg-green-400 px-2 py-1 rounded-md`}>
                             {eye.status}
