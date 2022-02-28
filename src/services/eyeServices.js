@@ -17,6 +17,17 @@ export const getEyes = (name) => {
     })
 }
 
+export const getEyePhotoById = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await eyesController.get(`${eye_photo_id}`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const deleteEyePhotoOne = (eye_photo_id) => {
     return new Promise(async (resolve, reject) => {
         try {
