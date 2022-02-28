@@ -7,7 +7,8 @@ import ReactPaginate from 'react-paginate';
 // Services
 import {
     getEyes,
-    deleteEyePhotosAll
+    deleteEyePhotosAll,
+    deleteEyePhotoOne,
 } from '../services/eyeServices'
 
 // Icons
@@ -28,11 +29,25 @@ export const Home = () => {
     // Delete all state
     const [deleteAll, setDeleteAll] = useState(false)
 
+    // Delete one Stat
+    const [deleteOne, setDeleteOne] = useState(false)
+
     const onDeleteAllHandle = async () => {
         if(window.confirm('Are you sure?')) {
             try {
                 const res = await deleteEyePhotosAll()
                 setDeleteAll(!deleteAll)
+            } catch(e) {
+                setError(e.message)
+            }
+        }
+    }
+
+    const onDeleteOneHandle = async (eye_photo_id) => {
+        if(window.confirm('Are you sure?')) {
+            try {
+                const res = await deleteEyePhotoOne(eye_photo_id)
+                setDeleteOne(!deleteOne)
             } catch(e) {
                 setError(e.message)
             }
@@ -65,6 +80,10 @@ export const Home = () => {
         fetchEyes(name)
     }, [deleteAll])
 
+    useEffect(() => {
+        fetchEyes(name)
+    }, [deleteOne])
+
     // useEffect(() => {
     //     if(!localStorage.getItem("accessToken")) {
     //         navigate('/')
@@ -90,7 +109,7 @@ export const Home = () => {
                         </button>
                     </td>
                     <td className='p-2 text-md text-center border border-black w-36'>
-                        <button className='bg-red-400 hover:bg-red-500 px-2 py-1 rounded-md'>
+                        <button onClick={() => onDeleteOneHandle(eye.eye_photo_id)} className='bg-red-400 hover:bg-red-500 px-2 py-1 rounded-md'>
                             <AiOutlineDelete className='text-white h-6 w-6'/>
                         </button>
                     </td>
