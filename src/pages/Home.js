@@ -5,7 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import ReactPaginate from 'react-paginate';
 
 // Services
-import { getEyes } from '../services/eyeServices'
+import {
+    getEyes,
+    deleteEyePhotosAll
+} from '../services/eyeServices'
 
 // Icons
 import { MdUpdate } from 'react-icons/md'
@@ -22,9 +25,23 @@ export const Home = () => {
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState("")
 
+    // Delete all state
+    const [deleteAll, setDeleteAll] = useState(false)
+
+    const onDeleteAllHandle = async () => {
+        if(window.confirm('Are you sure?')) {
+            try {
+                const res = await deleteEyePhotosAll()
+                setDeleteAll(!deleteAll)
+            } catch(e) {
+                setError(e.message)
+            }
+        }
+    }
+
     // Paginate
     const [pageNumber, setPageNumber] = useState(0)
-    const itemsPerPage = 10
+    const itemsPerPage = 12
     const pageVisited = pageNumber * itemsPerPage
     const pageCount = Math.ceil(eyes.length / itemsPerPage)
 
@@ -46,13 +63,13 @@ export const Home = () => {
 
     useEffect(() => {
         fetchEyes(name)
-    }, [])
+    }, [deleteAll])
 
-    useEffect(() => {
-        if(!localStorage.getItem("accessToken")) {
-            navigate('/')
-        }
-    }, [])
+    // useEffect(() => {
+    //     if(!localStorage.getItem("accessToken")) {
+    //         navigate('/')
+    //     }
+    // }, [])
 
     const displayEyePhotos = eyes
         .slice(pageVisited, pageVisited + itemsPerPage)
@@ -86,23 +103,25 @@ export const Home = () => {
             <table className='table-auto w-full text-xl'>
                 <thead>
                     <tr className='bg-trustworthy-300'>
-                        <td className='p-3 border border-black text-center'>No.</td>
-                        <td className='p-3 border border-black text-center'>Photo ID</td>
-                        <td className='p-3 border border-black text-center'>Created</td>
-                        <td className='p-3 border border-black text-center'>Status</td>
-                        <td className='p-3 border border-black text-center'>Update</td>
-                        <td className='p-3 border border-black text-center'>Delete</td>
+                        <td className='p-3 border border-black font-bold text-center'>No.</td>
+                        <td className='p-3 border border-black font-bold text-center'>Photo ID</td>
+                        <td className='p-3 border border-black font-bold text-center'>Created</td>
+                        <td className='p-3 border border-black font-bold text-center'>Status</td>
+                        <td className='p-3 border border-black font-bold text-center'>Update</td>
+                        <td className='p-3 border border-black font-bold text-center'>Delete</td>
                     </tr>
                 </thead>
                 <tbody>
                     {displayEyePhotos}
                 </tbody>
             </table>
-            <div className='w-full flex justify-end py-6 px-7'>
-                <button className='bg-red-400 hover:bg-red-500 px-4 py-2 text-white rounded-md'>
-                    Delete All
-                </button>
-            </div>
+            {eyes.length > 0 &&
+                <div className='w-full flex justify-end py-6 px-7'>
+                    <button onClick={() => onDeleteAllHandle()} className='bg-red-400 hover:bg-red-500 px-4 py-2 text-white rounded-md'>
+                        Delete All
+                    </button>
+                </div>
+            }
             <ReactPaginate className='fixed bottom-0 py-6 flex space-x-6 items-center justify-center text-black text-md font-bold w-full'
                 previousLabel={<IoIosArrowBack className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded'/>}
                 nextLabel={<IoIosArrowForward className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded'/>}
