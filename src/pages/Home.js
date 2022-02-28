@@ -61,6 +61,7 @@ export const Home = () => {
                 <tr key={eye.eye_photo_id}>
                     <td className='p-2 text-md text-center border border-black w-20'>{i+1}</td>
                     <td className='p-2 text-md text-center border border-black'>{eye.eye_photo_id}</td>
+                    <td className='p-2 text-md text-center border border-black'>{eye.created.match(/.*(?=T)/)[0]}</td>
                     <td className='p-2 text-md text-center border border-black w-36'>
                         <div className={eye.status === 'IN_PROGRESS'? `bg-yellow-400 px-2 py-1 rounded-md animate-pulse`: `bg-green-400 px-2 py-1 rounded-md`}>
                             {eye.status}
@@ -87,6 +88,7 @@ export const Home = () => {
                     <tr className='bg-trustworthy-300'>
                         <td className='p-3 border border-black text-center'>No.</td>
                         <td className='p-3 border border-black text-center'>Photo ID</td>
+                        <td className='p-3 border border-black text-center'>Created</td>
                         <td className='p-3 border border-black text-center'>Status</td>
                         <td className='p-3 border border-black text-center'>Update</td>
                         <td className='p-3 border border-black text-center'>Delete</td>
@@ -96,6 +98,11 @@ export const Home = () => {
                     {displayEyePhotos}
                 </tbody>
             </table>
+            <div className='w-full flex justify-end py-6 px-7'>
+                <button className='bg-red-400 hover:bg-red-500 px-4 py-2 text-white rounded-md'>
+                    Delete All
+                </button>
+            </div>
             <ReactPaginate className='fixed bottom-0 py-6 flex space-x-6 items-center justify-center text-black text-md font-bold w-full'
                 previousLabel={<IoIosArrowBack className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded'/>}
                 nextLabel={<IoIosArrowForward className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded'/>}
