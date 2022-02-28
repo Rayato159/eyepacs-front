@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+// Paginate
+import ReactPaginate from 'react-paginate';
+
 // Services
 import { getEyes } from '../services/eyeServices'
 
 // Icons
 import { MdUpdate } from 'react-icons/md'
 import { AiOutlineDelete } from 'react-icons/ai'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
 export const Home = () => {
 
@@ -17,6 +21,16 @@ export const Home = () => {
     const [eyes, setEyes] = useState([])
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState("")
+
+    // Paginate
+    const [pageNumber, setPageNumber] = useState(0)
+    const itemsPerPage = 10
+    const pageVisited = pageNumber * itemsPerPage
+    const pageCount = Math.ceil(eyes.length / itemsPerPage)
+
+    const onPageChange = ({ selected }) => {
+        setPageNumber(selected)
+    }
 
     const fetchEyes = async (name) => {
         setIsPending(true)
@@ -41,7 +55,7 @@ export const Home = () => {
     }, [])
 
     const displayEyePhotos = eyes
-        .slice(0, 10)
+        .slice(pageVisited, pageVisited + itemsPerPage)
         .map((eye, i) => {
             return (
                 <tr key={eye.eye_photo_id}>
@@ -82,6 +96,13 @@ export const Home = () => {
                     {displayEyePhotos}
                 </tbody>
             </table>
+            <ReactPaginate className='fixed bottom-0 py-6 flex space-x-6 items-center justify-center text-black text-md font-bold w-full'
+                previousLabel={<IoIosArrowBack className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded'/>}
+                nextLabel={<IoIosArrowForward className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded'/>}
+                pageCount={pageCount}
+                onPageChange={(props) => onPageChange(props)}
+                activeClassName={'text-black border border-black rounded px-3 py-1 bg-trustworthy-200 hover:bg-trustworthy-300'}
+            />
         </div>
     )
 }
