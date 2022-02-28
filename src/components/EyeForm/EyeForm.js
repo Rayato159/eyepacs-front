@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EyeForm() {
+export const EyeForm = () => {
     return (
         <table className="table-fix justify-center table-auto w-full">
             <thead>
