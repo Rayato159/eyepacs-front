@@ -31,9 +31,9 @@ export const Sidebar = () => {
                 <div className='flex flex-col justify-between min-h-screen'>
                     {/* Top */}
                     <div className='flex items-center justify-between p-3'>
-                        <div className='font-semibold text-xl text-black truncate'>
+                        <button onClick={() => navigate('/home')} className='font-semibold text-xl text-black truncate'>
                             EyePACS
-                        </div>
+                        </button>
                         <button onClick={() => setIsShowToggle(!isShowToggle)}>
                             <BiMenu className='text-black h-6 w-6'/>
                         </button>

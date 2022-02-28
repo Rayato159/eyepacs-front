@@ -104,7 +104,7 @@ export const Home = () => {
                         </div>
                     </td>
                     <td className='p-2 text-md text-center border border-black w-36'>
-                        <button className='bg-blue-400 hover:bg-blue-500 px-2 py-1 rounded-md'>
+                        <button onClick={() => navigate(`update/${eye.eye_photo_id}`)} className='bg-blue-400 hover:bg-blue-500 px-2 py-1 rounded-md'>
                             <MdUpdate className='text-white h-6 w-6'/>
                         </button>
                     </td>
