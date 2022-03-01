@@ -2,41 +2,61 @@ import React, { useState, useEffect } from 'react'
 
 export const EyeForm = () => {
 
-    // Table1 State
+    // Table 1 State
     const [table1_1, setTable1_1] = useState(false)
     const [table1_2, setTable1_2] = useState(false)
 
-    // Table2 State
+    // Table 2 State
     const [table2_1, setTable2_1] = useState(false)
     const [table2_2, setTable2_2] = useState(false)
 
-    // Table3 State
+    // Table 3 State
     const [table3_1, setTable3_1] = useState(false)
     const [table3_2, setTable3_2] = useState(false)
 
-    // Table5 State
+    // Table 4 State
+    const [lower2a, setLower2a] = useState(false)
+    const [upper2a, setUpper2a] = useState(false)
+    const [cannotGrade2a, setCannotGrade2a] = useState(false)
+
+    // Table 5 State
     const [table5_1, setTable5_1] = useState(false)
     const [table5_2, setTable5_2] = useState(false)
 
-    // Table7 State
+    // Table 6 State
+    const [lower8a, setLower8a] = useState(false)
+    const [upper8a, setUpper8a] = useState(false)
+    const [cannotGrade8a, setCannotGrade8a] = useState(false)
+
+    // Table 7 State
     const [table7_1, setTable7_1] = useState(false)
     const [table7_2, setTable7_2] = useState(false)
 
-    // Table8 State
+    // Table 8 State
     const [table8_1, setTable8_1] = useState(false)
     const [table8_2, setTable8_2] = useState(false)
 
-    // Table9 State
+    // Table 9 State
     const [table9_1, setTable9_1] = useState(false)
     const [table9_2, setTable9_2] = useState(false)
 
-    // Table10 State
+    // Table 10 State
     const [table10_1, setTable10_1] = useState(false)
     const [table10_2, setTable10_2] = useState(false)
 
-    // Table11 State
+    // Table 11 State
     const [table11_1, setTable11_1] = useState(false)
     const [table11_2, setTable11_2] = useState(false)
+
+    // Table 12 State
+    const [lower2DD, setLower2DD] = useState(false)
+    const [lower1DD, setLower1DD] = useState(false)
+    const [cannotGradeDD, setCannotGradeDD] = useState(false)
+
+    // Table 13 State
+    const [select, setSelect] = useState(0)
+
+    console.log(select)
 
     return (
         <table className="justify-center table-auto">
@@ -84,12 +104,12 @@ export const EyeForm = () => {
                                 <tr>
                                     <td className="border border-slate-300 p-1">
                                         <input className='h-5 w-5' type="checkbox" ></input>
-                                        <label>&#60;2a</label>
+                                        <label>{`<2a`}</label>
                                     </td>
 
                                     <td className="border border-slate-300 p-1 ">
                                         <input className='h-5 w-5' type="checkbox"></input>
-                                        <label>2a&#62;</label>
+                                        <label>{`2a>`}</label>
                                     </td>
                                 </tr>
                             </tbody>
@@ -118,12 +138,12 @@ export const EyeForm = () => {
                                     <tr>
                                         <td className="border border-slate-300 p-1" >
                                             <input className='h-5 w-5' type="checkbox" ></input>
-                                            <label>&#60;8a</label>
+                                            <label>{`<8a`}</label>
                                         </td>
 
                                         <td className="border border-slate-300 p-1 ">
                                             <input className='h-5 w-5' type="checkbox"></input>
-                                            <label>8a&#62;</label>
+                                            <label>{`8a>`}</label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -182,11 +202,11 @@ export const EyeForm = () => {
                                     <tr>
                                         <td className="border border-slate-300 p-1">
                                             <input className='h-5 w-5' type="checkbox" ></input>
-                                            <label>&#60;2DD</label>
+                                            <label>{`<2DD`}</label>
                                         </td>
                                         <td className="border border-slate-300 p-1 ">
                                             <input className='h-5 w-5' type="checkbox"></input>
-                                            <label>&#60;1DD</label>
+                                            <label>{`<1DD`}</label>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -201,7 +221,7 @@ export const EyeForm = () => {
                     <td className="border border-slate-300 p-1 text-left px-4">Other referrable conditions in either eye:</td>
 
                     <td className="border border-slate-300 p-1 text-center">
-                        <select className='w-full border border-slate-300 p-1 focus:outline-none'>
+                        <select onChange={(e) => setSelect(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                             <option value={1}>Cataract</option>
                             <option value={2}>Glaucoma</option>
                             <option value={3}>Occlusion</option>
