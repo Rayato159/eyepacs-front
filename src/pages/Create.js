@@ -16,6 +16,10 @@ export const Create = () => {
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState("")
 
+    // Eye side state
+    const [left, setLeft] = useState(false)
+    const [right, setRight] = useState(false)
+
     const fetchEye = async (eye_photo_id) => {
         try {
             const res = await getEyePhotoById(eye_photo_id)
@@ -48,8 +52,8 @@ export const Create = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="border border-slate-300 p-2 text-center"><input className='h-5 w-5' type="checkbox"></input></td>
-                                <td className="border border-slate-300 p-2 text-center"><input className='h-5 w-5' type="checkbox"></input></td>
+                                <td className="border border-slate-300 p-2 text-center"><input disabled={right} onChange={() => setLeft(!left)} className='h-5 w-5' type="checkbox" /></td>
+                                <td className="border border-slate-300 p-2 text-center"><input disabled={left} onChange={() => setRight(!right)} className='h-5 w-5' type="checkbox" /></td>
                             </tr>
                         </tbody>
                     </table>
