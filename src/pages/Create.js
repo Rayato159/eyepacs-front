@@ -36,12 +36,14 @@ export const Create = () => {
     return (
         <div className='flex items-center justify-center h-screen w-full space-x-32'>
             <div className='flex flex-col space-y-4'>
+                {/* Image show */}
                 {eye &&
                     <img
                         className='w-96 h-auto'
                         src={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`} 
                     />
                 }
+                {/* Form */}
                 <div className='w-96'>
                     <table className='table-auto w-96'>
                         <thead>
