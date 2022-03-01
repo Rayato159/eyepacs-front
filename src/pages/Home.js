@@ -13,7 +13,7 @@ import {
 
 // Icons
 import { MdUpdate } from 'react-icons/md'
-import { AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineDelete, AiOutlineFileAdd } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
 export const Home = () => {
@@ -104,7 +104,12 @@ export const Home = () => {
                         </div>
                     </td>
                     <td className='p-2 text-md text-center border border-black w-36'>
-                        <button onClick={() => navigate(`update/${eye.eye_photo_id}`)} className='bg-blue-400 hover:bg-blue-500 px-2 py-1 rounded-md'>
+                        <button disabled={eye.status === 'DONE'? true: false} onClick={() => navigate(`create/${eye.eye_photo_id}`)} className='bg-green-400 hover:bg-green-500 px-2 py-1 rounded-md disabled:bg-gray-400'>
+                            <AiOutlineFileAdd className='text-white h-6 w-6'/>
+                        </button>
+                    </td>
+                    <td className='p-2 text-md text-center border border-black w-36'>
+                        <button disabled={eye.status === 'DONE'? false: true} onClick={() => navigate(`update/${eye.eye_photo_id}`)} className='bg-blue-400 hover:bg-blue-500 px-2 py-1 rounded-md disabled:bg-gray-400'>
                             <MdUpdate className='text-white h-6 w-6'/>
                         </button>
                     </td>
@@ -126,6 +131,7 @@ export const Home = () => {
                         <td className='p-3 border border-black font-bold text-center'>Photo ID</td>
                         <td className='p-3 border border-black font-bold text-center'>Created</td>
                         <td className='p-3 border border-black font-bold text-center'>Status</td>
+                        <td className='p-3 border border-black font-bold text-center'>Create</td>
                         <td className='p-3 border border-black font-bold text-center'>Update</td>
                         <td className='p-3 border border-black font-bold text-center'>Delete</td>
                     </tr>
