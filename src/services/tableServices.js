@@ -316,3 +316,17 @@ export const createTable13 = (
         }
     })
 }
+
+export const deleteAllTable = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            console.log(eye_photo_id)
+            const res = await axios.delete(`http://localhost:3000/api/delete-all-table/${eye_photo_id}`, {
+                headers: accessToken
+            })
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}

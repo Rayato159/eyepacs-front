@@ -7,7 +7,7 @@ import { BiErrorCircle } from 'react-icons/bi'
 // Services
 import {
     updateEyeSide,
-    updateEyeStatus
+    updateEyeStatus,
 } from '../../services/eyeServices'
 
 import {
@@ -24,6 +24,7 @@ import {
     createTable11,
     createTable12,
     createTable13,
+    deleteAllTable,
 } from '../../services/tableServices'
 
 export const EyeForm = ({ left, eye_photo_id }) => {
@@ -115,9 +116,12 @@ export const EyeForm = ({ left, eye_photo_id }) => {
             const eyesideUpdate = await updateEyeSide(eye_photo_id, eyeside)
             const statusUpdate = await updateEyeStatus(eye_photo_id)
             setIsPending(false)
+            setError("")
             setIsCompleted(true)
         } catch(e) {
+            const deleteTable = await deleteAllTable(eye_photo_id)
             setError(e.message)
+            setIsPending(false)
         }
     }
 
