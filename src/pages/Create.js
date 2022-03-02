@@ -6,6 +6,21 @@ import { EyeForm } from '../components/EyeForm/EyeForm'
 
 // Services
 import { getEyePhotoById } from '../services/eyeServices'
+import {
+    createTable1,
+    createTable2,
+    createTable3,
+    createTable4,
+    createTable5,
+    createTable6,
+    createTable7,
+    createTable8,
+    createTable9,
+    createTable10,
+    createTable11,
+    createTable12,
+    createTable13,
+} from '../services/tableServices'
 
 export const Create = () => {
     // Get params
