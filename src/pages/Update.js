@@ -73,7 +73,7 @@ export const Update = () => {
                 </div>
                 <div>
                     <EyeFormUpdate 
-                        eyeside={eye? eye.eyeside: null}
+                        eyeside={left? 'LEFT': 'RIGHT'}
                         eye_photo_id={eye_photo_id}
                     />
                 </div>

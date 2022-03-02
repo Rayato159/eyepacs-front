@@ -7,7 +7,6 @@ import { BiErrorCircle } from 'react-icons/bi'
 // Services
 import {
     updateEyeSide,
-    updateEyeStatus,
 } from '../../services/eyeServices'
 
 import {
@@ -40,15 +39,11 @@ import {
     updateTable11,
     updateTable12,
     updateTable13,
-    
-    // Delete
-    deleteAllTable,
 } from '../../services/tableServices'
 
 export const EyeFormUpdate = ({ eyeside, eye_photo_id }) => {
 
     const navigate = useNavigate()
-    const [eyesideSetting, setEyeSide] = useState(eyeside === 'LEFT'? 'LEFT': 'RIGHT')
 
     // General state
     const [isPending, setIsPending] = useState(false)
@@ -201,6 +196,21 @@ export const EyeFormUpdate = ({ eyeside, eye_photo_id }) => {
         setIsPending(true)
         try {
             // API lists
+            const table1 = await updateTable1(eye_photo_id, table1_1, table1_2)
+            const table2 = await updateTable2(eye_photo_id, table2_1, table2_2)
+            const table3 = await updateTable3(eye_photo_id, table3_1, table3_2)
+            const table4 = await updateTable4(eye_photo_id, lower2a, upper2a, cannotGrade2a)
+            const table5 = await updateTable5(eye_photo_id, table5_1, table5_2)
+            const table6 = await updateTable6(eye_photo_id, lower8a, upper8a, cannotGrade8a)
+            const table7 = await updateTable7(eye_photo_id, table7_1, table7_2)
+            const table8 = await updateTable8(eye_photo_id, table8_1, table8_2)
+            const table9 = await updateTable9(eye_photo_id, table9_1, table9_2)
+            const table10 = await updateTable10(eye_photo_id, table10_1, table10_2)
+            const table11 = await updateTable11(eye_photo_id, table11_1, table11_2)
+            const table12 = await updateTable12(eye_photo_id, lower2DD, lower1DD, cannotGradeDD)
+            const table13 = await updateTable13(eye_photo_id, select)
+            const eyesideUpdate = await updateEyeSide(eye_photo_id, eyeside)
+
             setIsPending(false)
             setError("")
             setIsCompleted(true)
