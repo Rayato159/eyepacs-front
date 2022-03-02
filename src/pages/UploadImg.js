@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+// Icons
+import { BiErrorCircle } from 'react-icons/bi'
 
 // Services
 import { uploadEyePhotos } from '../services/eyeServices'
@@ -8,8 +12,31 @@ import { DropZone } from '../components/DropZone/DropZone'
 
 export const UploadImg = () => {
 
+    const navigate = useNavigate()
+
+    // Images state
     const [images, setImages] = useState([])
-    console.log(images)
+    const [isPending, setIsPending] = useState(false)
+    const [error, setError] = useState("")
+    const [isComplete, setIsComplete] = useState(false)
+
+    const onUploadSubmit = async () => {
+        setIsPending(true)
+        try {
+            const res = await uploadEyePhotos(images)
+            setIsPending(false)
+            setIsComplete(true)
+        } catch(e) {
+            setError(e.message)
+            setIsPending(false)
+        }
+    }
+
+    useEffect(() => {
+        if(isComplete) {
+            navigate('/home')
+        }
+    }, [isComplete])
 
     return (
         <div className='max-w-3xl mx-auto h-screen'>
@@ -22,10 +49,20 @@ export const UploadImg = () => {
                         <DropZone props={(files) => setImages(files)} msg={`Upload Images`} />
                     </div>
                     <div className='flex justify-end'>
-                        <button className='font-semibold text-xl text-black px-4 py-1 bg-white w-48 rounded-md shadow-md'>
-                            Upload
+                        <button onClick={onUploadSubmit} className='font-semibold text-xl text-black px-4 py-1 bg-white w-48 rounded-md shadow-md'>
+                            {isPending? 'Loading...': 'Upload'}
                         </button>
                     </div>
+                    {error &&
+                        <div className='flex space-x-2 items-center'>
+                            <div>
+                                <BiErrorCircle className='text-red-500 h-5 w-5'/>
+                            </div>
+                            <div className='text-red-500 text-md'>
+                                {error}
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
