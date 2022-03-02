@@ -177,12 +177,12 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                                 <tbody>
                                     <tr>
                                         <td className="border border-slate-300 p-1">
-                                            <input disabled={lower2a || cannotGrade2a} onChange={() => setUpper2a(!upper2a)} className='h-5 w-5' type="checkbox" ></input>
+                                            <input disabled={upper2a || cannotGrade2a} onChange={() => setLower2a(!lower2a)} className='h-5 w-5' type="checkbox" ></input>
                                             <label>{`<2a`}</label>
                                         </td>
 
                                         <td className="border border-slate-300 p-1 ">
-                                            <input disabled={upper2a || cannotGrade2a} onChange={() => setLower2a(!lower2a)} className='h-5 w-5' type="checkbox"></input>
+                                            <input disabled={lower2a || cannotGrade2a} onChange={() => setUpper2a(!upper2a)} className='h-5 w-5' type="checkbox"></input>
                                             <label>{`2a>`}</label>
                                         </td>
                                     </tr>
@@ -213,12 +213,12 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                                     <tbody>
                                         <tr>
                                             <td className="border border-slate-300 p-1" >
-                                                <input disabled={lower8a || cannotGrade8a} onChange={() => setUpper8a(!upper8a)} className='h-5 w-5' type="checkbox" ></input>
+                                                <input disabled={upper8a || cannotGrade8a} onChange={() => setLower8a(!lower8a)} className='h-5 w-5' type="checkbox" ></input>
                                                 <label>{`<8a`}</label>
                                             </td>
 
                                             <td className="border border-slate-300 p-1 ">
-                                                <input disabled={upper8a || cannotGrade8a} onChange={() => setLower8a(!lower8a)} className='h-5 w-5' type="checkbox"></input>
+                                                <input disabled={lower8a || cannotGrade8a} onChange={() => setUpper8a(!upper8a)} className='h-5 w-5' type="checkbox"></input>
                                                 <label>{`8a>`}</label>
                                             </td>
                                         </tr>
