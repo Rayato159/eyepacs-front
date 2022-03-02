@@ -18,6 +18,7 @@ import { Login } from './pages/Login'
 import { Home } from './pages/Home'
 import { Create } from './pages/Create'
 import { Update } from './pages/Update';
+import { UploadImg } from './pages/UploadImg';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,6 +26,7 @@ ReactDOM.render(
       <Routes>
           <Route path='/' element={<Login />} />
           <Route path='home' element={<Home />} />
+          <Route path='home/upload' element={<UploadImg />} />
           <Route path='home/create/:eye_photo_id' element={<Create />}/>
           <Route path='home/update/:eye_photo_id' element={<Update />}/>
       </Routes>

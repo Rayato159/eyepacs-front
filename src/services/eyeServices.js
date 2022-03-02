@@ -56,6 +56,27 @@ export const updateEyeStatus = (eye_photo_id) => {
     })
 }
 
+// Images upload
+export const uploadEyePhotos = (images) => {
+
+    let formData = new FormData()
+    for(let i=0; i<images.length; i++) {
+        formData.append('images', images[i])
+    }
+
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await eyesController.post(`uploads`,  
+                formData,
+                { headers: accessToken }
+            )
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const deleteEyePhotoOne = (eye_photo_id) => {
     return new Promise(async (resolve, reject) => {
         try {
