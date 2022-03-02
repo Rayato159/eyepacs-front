@@ -28,6 +28,16 @@ export const getEyePhotoById = (eye_photo_id) => {
     })
 }
 
+export const updateEyeSide = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await eyesController.patch(`${eye_photo_id}/update/eyeside`)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const deleteEyePhotoOne = (eye_photo_id) => {
     return new Promise(async (resolve, reject) => {
         try {

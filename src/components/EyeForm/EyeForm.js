@@ -1,6 +1,23 @@
 import React, { useState, useEffect } from 'react'
 
-export const EyeForm = () => {
+// Services
+import {
+    createTable1,
+    createTable2,
+    createTable3,
+    createTable4,
+    createTable5,
+    createTable6,
+    createTable7,
+    createTable8,
+    createTable9,
+    createTable10,
+    createTable11,
+    createTable12,
+    createTable13,
+} from '../../services/tableServices'
+
+export const EyeForm = ({ left, right, eye_photo_id }) => {
 
     // Table 1 State
     const [table1_1, setTable1_1] = useState(false)

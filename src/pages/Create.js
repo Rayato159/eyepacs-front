@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 // Components
 import { EyeForm } from '../components/EyeForm/EyeForm'
 
 // Services
 import { getEyePhotoById } from '../services/eyeServices'
-import {
-    createTable1,
-    createTable2,
-    createTable3,
-    createTable4,
-    createTable5,
-    createTable6,
-    createTable7,
-    createTable8,
-    createTable9,
-    createTable10,
-    createTable11,
-    createTable12,
-    createTable13,
-} from '../services/tableServices'
 
 export const Create = () => {
     // Get params
@@ -77,7 +62,11 @@ export const Create = () => {
                 </div>
             </div>
             <div>
-                <EyeForm/>
+                <EyeForm 
+                    left={left} 
+                    right={right} 
+                    eye_photo_id={eye_photo_id}
+                />
             </div>
         </div>
     )
