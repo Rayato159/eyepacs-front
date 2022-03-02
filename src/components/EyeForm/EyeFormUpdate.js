@@ -45,10 +45,10 @@ import {
     deleteAllTable,
 } from '../../services/tableServices'
 
-export const EyeFormUpdate = ({ left, eye_photo_id }) => {
+export const EyeFormUpdate = ({ eyeside, eye_photo_id }) => {
 
     const navigate = useNavigate()
-    const eyeside = left? 'LEFT': 'RIGHT'
+    const [eyesideSetting, setEyeSide] = useState(eyeside === 'LEFT'? 'LEFT': 'RIGHT')
 
     // General state
     const [isPending, setIsPending] = useState(false)

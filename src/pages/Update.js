@@ -23,6 +23,8 @@ export const Update = () => {
         try {
             const res = await getEyePhotoById(eye_photo_id)
             setEye(res)
+            setLeft(res.eyeside === 'LEFT'? true: false)
+            setRight(res.eyeside === 'RIGHT'? true: false)
         } catch(e) {
             setError(e.message)
         }
@@ -62,8 +64,8 @@ export const Update = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className="border border-slate-300 p-2 text-center"><input disabled={right} onChange={() => setLeft(!left)} className='h-5 w-5' type="checkbox" /></td>
-                                    <td className="border border-slate-300 p-2 text-center"><input disabled={left} onChange={() => setRight(!right)} className='h-5 w-5' type="checkbox" /></td>
+                                    <td className="border border-slate-300 p-2 text-center"><input checked={left} disabled={right} onChange={() => setLeft(!left)} className='h-5 w-5' type="checkbox" /></td>
+                                    <td className="border border-slate-300 p-2 text-center"><input checked={right} disabled={left} onChange={() => setRight(!right)} className='h-5 w-5' type="checkbox" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -71,7 +73,7 @@ export const Update = () => {
                 </div>
                 <div>
                     <EyeFormUpdate 
-                        left={left}
+                        eyeside={eye? eye.eyeside: null}
                         eye_photo_id={eye_photo_id}
                     />
                 </div>
