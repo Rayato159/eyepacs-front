@@ -56,7 +56,7 @@ export const Home = () => {
 
     // Paginate
     const [pageNumber, setPageNumber] = useState(0)
-    const itemsPerPage = 12
+    const itemsPerPage = 10
     const pageVisited = pageNumber * itemsPerPage
     const pageCount = Math.ceil(eyes.length / itemsPerPage)
 
