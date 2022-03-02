@@ -54,9 +54,7 @@ export const EyeForm = () => {
     const [cannotGradeDD, setCannotGradeDD] = useState(false)
 
     // Table 13 State
-    const [select, setSelect] = useState(0)
-
-    console.log(select)
+    const [select, setSelect] = useState(1)
 
     return (
         <table className="justify-center table-auto">
@@ -103,12 +101,12 @@ export const EyeForm = () => {
                             <tbody>
                                 <tr>
                                     <td className="border border-slate-300 p-1">
-                                        <input className='h-5 w-5' type="checkbox" ></input>
+                                        <input disabled={lower2a || cannotGrade2a} onChange={() => setUpper2a(!upper2a)} className='h-5 w-5' type="checkbox" ></input>
                                         <label>{`<2a`}</label>
                                     </td>
 
                                     <td className="border border-slate-300 p-1 ">
-                                        <input className='h-5 w-5' type="checkbox"></input>
+                                        <input disabled={upper2a || cannotGrade2a} onChange={() => setLower2a(!lower2a)} className='h-5 w-5' type="checkbox"></input>
                                         <label>{`2a>`}</label>
                                     </td>
                                 </tr>
@@ -116,7 +114,9 @@ export const EyeForm = () => {
                         </table>
                     </td>
 
-                    <td className="border border-slate-300 p-1 text-center"><input className='h-5 w-5' type="checkbox"></input></td>
+                    <td className="border border-slate-300 p-1 text-center">
+                        <input disabled={upper2a || lower2a} onChange={() => setCannotGrade2a(!cannotGrade2a)} className='h-5 w-5' type="checkbox"></input>
+                    </td>
                 </tr>
 
 
@@ -137,12 +137,12 @@ export const EyeForm = () => {
                                 <tbody>
                                     <tr>
                                         <td className="border border-slate-300 p-1" >
-                                            <input className='h-5 w-5' type="checkbox" ></input>
+                                            <input disabled={lower8a || cannotGrade8a} onChange={() => setUpper8a(!upper8a)} className='h-5 w-5' type="checkbox" ></input>
                                             <label>{`<8a`}</label>
                                         </td>
 
                                         <td className="border border-slate-300 p-1 ">
-                                            <input className='h-5 w-5' type="checkbox"></input>
+                                            <input disabled={upper8a || cannotGrade8a} onChange={() => setLower8a(!lower8a)} className='h-5 w-5' type="checkbox"></input>
                                             <label>{`8a>`}</label>
                                         </td>
                                     </tr>
@@ -150,7 +150,9 @@ export const EyeForm = () => {
                             </table>
                         </div>
                     </td>
-                    <td className="border border-slate-300 p-1 text-center"><input className='h-5 w-5' type="checkbox"></input></td>
+                    <td className="border border-slate-300 p-1 text-center">
+                        <input disabled={upper8a || lower8a} onChange={() => setCannotGrade8a(!cannotGrade8a)} className='h-5 w-5' type="checkbox"></input>
+                    </td>
                 </tr>
 
 
@@ -201,11 +203,11 @@ export const EyeForm = () => {
                                 <tbody>
                                     <tr>
                                         <td className="border border-slate-300 p-1">
-                                            <input className='h-5 w-5' type="checkbox" ></input>
+                                            <input disabled={lower1DD || cannotGradeDD} onChange={() => setLower2DD(!lower2DD)} className='h-5 w-5' type="checkbox" ></input>
                                             <label>{`<2DD`}</label>
                                         </td>
                                         <td className="border border-slate-300 p-1 ">
-                                            <input className='h-5 w-5' type="checkbox"></input>
+                                            <input disabled={lower2DD || cannotGradeDD} onChange={() => setLower1DD(!lower1DD)} className='h-5 w-5' type="checkbox"></input>
                                             <label>{`<1DD`}</label>
                                         </td>
                                     </tr>
@@ -213,7 +215,9 @@ export const EyeForm = () => {
                             </table>
                         </div>
                     </td>
-                    <td className="border border-slate-300 p-1 text-center"><input className='h-5 w-5' type="checkbox"></input></td>
+                    <td className="border border-slate-300 p-1 text-center">
+                        <input disabled={lower1DD || lower2DD} onChange={() => setCannotGradeDD(!cannotGradeDD)} className='h-5 w-5' type="checkbox"></input>
+                    </td>
                 </tr>
 
                 <tr>
