@@ -11,6 +11,21 @@ import {
 } from '../../services/eyeServices'
 
 import {
+    // Get
+    getTable1,
+    getTable2,
+    getTable3,
+    getTable4,
+    getTable5,
+    getTable6,
+    getTable7,
+    getTable8,
+    getTable9,
+    getTable10,
+    getTable11,
+    getTable12,
+    getTable13,
+
     // Update
     updateTable1,
     updateTable2,
@@ -25,6 +40,7 @@ import {
     updateTable11,
     updateTable12,
     updateTable13,
+    
     // Delete
     deleteAllTable,
 } from '../../services/tableServices'
@@ -94,8 +110,66 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
     const [select, setSelect] = useState(1)
     
     // Clear state
-    const onClearHandle = () => {
+    const onDefaultHandle = () => {
         window.location.reload()
+    }
+
+    // Fetch eye checked
+    const [getEyeError, setGetEyeError] = useState("")
+    const fetchEyeSetting = async () => {
+        try {
+            const resTable1 = await getTable1(eye_photo_id)
+            setTable1_1(resTable1.yes? true: false)
+            setTable1_2(resTable1.cannot_grade? true: false)
+            
+            const resTable2 = await getTable2(eye_photo_id)
+            setTable2_1(resTable2.yes? true: false)
+            setTable2_2(resTable2.cannot_grade? true: false)
+
+            const resTable3 = await getTable3(eye_photo_id)
+            setTable3_1(resTable3.yes? true: false)
+            setTable3_2(resTable3.cannot_grade? true: false)
+
+            // Special
+            const resTable4 = await getTable4(eye_photo_id)
+
+            const resTable5 = await getTable5(eye_photo_id)
+            setTable5_1(resTable5.yes? true: false)
+            setTable5_2(resTable5.cannot_grade? true: false)
+
+            // Special
+            const resTable6 = await getTable6(eye_photo_id)
+
+
+            const resTable7 = await getTable7(eye_photo_id)
+            setTable7_1(resTable7.yes? true: false)
+            setTable7_2(resTable7.cannot_grade? true: false)
+
+            const resTable8 = await getTable8(eye_photo_id)
+            setTable8_1(resTable8.yes? true: false)
+            setTable8_2(resTable8.cannot_grade? true: false)
+
+            const resTable9 = await getTable9(eye_photo_id)
+            setTable9_1(resTable9.yes? true: false)
+            setTable9_2(resTable9.cannot_grade? true: false)
+
+            const resTable10 = await getTable10(eye_photo_id)
+            setTable10_1(resTable10.yes? true: false)
+            setTable10_2(resTable10.cannot_grade? true: false)
+
+            const resTable11 = await getTable11(eye_photo_id)
+            setTable11_1(resTable11.yes? true: false)
+            setTable11_2(resTable11.cannot_grade? true: false)
+
+            // Special
+            const resTable12 = await getTable12(eye_photo_id)
+
+            // Special
+            const resTable13 = await getTable13(eye_photo_id)
+            setGetEyeError("")
+        } catch(e) {
+            setGetEyeError(e.message)
+        }
     }
 
     // Submit handle
@@ -111,6 +185,10 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
             setIsPending(false)
         }
     }
+    
+    useEffect(() => {
+        fetchEyeSetting()
+    }, [])
 
     useEffect(() => {
         if(isCompleted) {
@@ -135,23 +213,23 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">1</td>
                         <td className="border border-slate-300 p-1 text-left px-4">No apparent diabetic retionpathy</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table1_2} onChange={() => setTable1_1(!table1_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table1_1} onChange={() => setTable1_2(!table1_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table1_1} disabled={table1_2} onChange={() => setTable1_1(!table1_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table1_2} disabled={table1_1} onChange={() => setTable1_2(!table1_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">2</td>
                         <td className="border border-slate-300 p-1 text-left px-4"> Microaneurysms ONLY (MA)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table2_2} onChange={() => setTable2_1(!table2_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table2_1} onChange={() => setTable2_2(!table2_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table2_1} disabled={table2_2} onChange={() => setTable2_1(!table2_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table2_2} disabled={table2_1} onChange={() => setTable2_2(!table2_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">3</td>
                         <td className="border border-slate-300 p-1 text-left px-4"> Cotton wool spts (CW)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table3_2} onChange={() => setTable3_1(!table3_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table3_1} onChange={() => setTable3_2(!table3_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table3_1} disabled={table3_2} onChange={() => setTable3_1(!table3_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table3_2} disabled={table3_1} onChange={() => setTable3_2(!table3_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
 
@@ -186,8 +264,8 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">5</td>
                         <td className="border border-slate-300 p-1 text-left px-4">Difinite Venous Beading 6a</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table5_2} onChange={() => setTable5_1(!table5_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table5_1} onChange={() => setTable5_2(!table5_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table5_1} disabled={table5_2} onChange={() => setTable5_1(!table5_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table5_2} disabled={table5_1} onChange={() => setTable5_2(!table5_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
@@ -314,7 +392,7 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
                 </div>
             }
             <div className='flex justify-end space-x-4'>
-                <button onClick={onClearHandle} className='py-2 px-4 bg-blue-400 hover:bg-blue-500 rounded-full w-48'>
+                <button onClick={onDefaultHandle} className='py-2 px-4 bg-blue-400 hover:bg-blue-500 rounded-full w-48'>
                     <div className='font-bold text-white'>
                         Back to Default
                     </div>
