@@ -11,20 +11,6 @@ import {
 } from '../../services/eyeServices'
 
 import {
-    // Create
-    createTable1,
-    createTable2,
-    createTable3,
-    createTable4,
-    createTable5,
-    createTable6,
-    createTable7,
-    createTable8,
-    createTable9,
-    createTable10,
-    createTable11,
-    createTable12,
-    createTable13,
     // Update
     updateTable1,
     updateTable2,
@@ -116,26 +102,11 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
     const onSubmitHandle = async () => {
         setIsPending(true)
         try {
-            const table1 = await createTable1(eye_photo_id, table1_1, table1_2)
-            const table2 = await createTable2(eye_photo_id, table2_1, table2_2)
-            const table3 = await createTable3(eye_photo_id, table3_1, table3_2)
-            const table4 = await createTable4(eye_photo_id, lower2a, upper2a, cannotGrade2a)
-            const table5 = await createTable5(eye_photo_id, table5_1, table5_2)
-            const table6 = await createTable6(eye_photo_id, lower8a, upper8a, cannotGrade8a)
-            const table7 = await createTable7(eye_photo_id, table7_1, table7_2)
-            const table8 = await createTable8(eye_photo_id, table8_1, table8_2)
-            const table9 = await createTable9(eye_photo_id, table9_1, table9_2)
-            const table10 = await createTable10(eye_photo_id, table10_1, table10_2)
-            const table11 = await createTable11(eye_photo_id, table11_1, table11_2)
-            const table12 = await createTable12(eye_photo_id, lower2DD, lower1DD, cannotGradeDD)
-            const table13 = await createTable13(eye_photo_id, select)
-            const eyesideUpdate = await updateEyeSide(eye_photo_id, eyeside)
-            const statusUpdate = await updateEyeStatus(eye_photo_id)
+            // API lists
             setIsPending(false)
             setError("")
             setIsCompleted(true)
         } catch(e) {
-            const deleteTable = await deleteAllTable(eye_photo_id)
             setError(e.message)
             setIsPending(false)
         }
@@ -343,9 +314,9 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
                 </div>
             }
             <div className='flex justify-end space-x-4'>
-                <button onClick={onClearHandle} className='py-2 px-4 bg-blue-400 hover:bg-blue-500 rounded-full w-36'>
+                <button onClick={onClearHandle} className='py-2 px-4 bg-blue-400 hover:bg-blue-500 rounded-full w-48'>
                     <div className='font-bold text-white'>
-                        Clear All
+                        Back to Default
                     </div>
                 </button>
                 {isPending?
@@ -357,7 +328,7 @@ export const EyeFormUpdate = ({ left, eye_photo_id }) => {
                     :
                     <button onClick={onSubmitHandle} className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full w-36'>
                         <div className='font-bold text-white'>
-                            Submit
+                            Update
                         </div>
                     </button>
                 }

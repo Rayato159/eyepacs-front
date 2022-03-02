@@ -36,6 +36,14 @@ export const Update = () => {
         <div className='aspect-video'>
             <div className='flex items-center justify-center h-screen w-full space-x-32'>
                 <div className='flex flex-col space-y-4'>
+                    {/* Image ID */}
+                    {eye &&
+                        <div className='bg-blue-400 p-2 rounded-lg'>
+                            <div className='flex justify-center text-2xl font-bold text-back'>
+                                {eye.eye_photo_id}
+                            </div>
+                        </div>
+                    }
                     {/* Image show */}
                     {eye &&
                         <img
