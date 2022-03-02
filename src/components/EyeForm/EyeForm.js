@@ -322,7 +322,7 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                         <BiErrorCircle className='text-red-500 h-5 w-5'/>
                     </div>
                     <div className='text-red-500 text-md'>
-                        Test Error Mock up
+                        {error}
                     </div>
                 </div>
             }
