@@ -74,6 +74,17 @@ export const createTable1 = (eye_photo_id, yes, cannot_grade) => {
     })
 }
 
+export const getTable1 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table1Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const updateTable1 = (eye_photo_id, yes, cannot_grade) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -107,6 +118,17 @@ export const createTable2 = (eye_photo_id, yes, cannot_grade) => {
     })
 }
 
+export const getTable2 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table2Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const updateTable2 = (eye_photo_id, yes, cannot_grade) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -133,6 +155,17 @@ export const createTable3 = (eye_photo_id, yes, cannot_grade) => {
             },{
                 headers: accessToken
             })
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const getTable3 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table3Controller.get(`${eye_photo_id}/get`)
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)
@@ -174,6 +207,17 @@ export const createTable4 = (eye_photo_id, lower_2a, upper_2a, cannot_grade) => 
     })
 }
 
+export const getTable4 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table4Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const updateTable4 = (eye_photo_id, lower_2a, upper_2a, cannot_grade) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -201,6 +245,17 @@ export const createTable5 = (eye_photo_id, yes, cannot_grade) => {
             },{
                 headers: accessToken
             })
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const getTable5 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table5Controller.get(`${eye_photo_id}/get`)
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)
@@ -242,6 +297,17 @@ export const createTable6 = (eye_photo_id, lower_8a, upper_8a, cannot_grade) => 
     })
 }
 
+export const getTable6 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table6Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const updateTable6 = (eye_photo_id, lower_8a, upper_8a, cannot_grade) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -269,6 +335,17 @@ export const createTable7 = (eye_photo_id, yes, cannot_grade) => {
             },{
                 headers: accessToken
             })
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const getTable7 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table7Controller.get(`${eye_photo_id}/get`)
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)
@@ -309,6 +386,17 @@ export const createTable8 = (eye_photo_id, yes, cannot_grade) => {
     })
 }
 
+export const getTable8 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table8Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const updateTable8 = (eye_photo_id, yes, cannot_grade) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -335,6 +423,17 @@ export const createTable9 = (eye_photo_id, yes, cannot_grade) => {
             },{
                 headers: accessToken
             })
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const getTable9 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table9Controller.get(`${eye_photo_id}/get`)
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)
@@ -376,6 +475,17 @@ export const createTable10 = (eye_photo_id, yes, cannot_grade) => {
     })
 }
 
+export const getTable10 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table10Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const updateTable10 = (eye_photo_id, yes, cannot_grade) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -402,6 +512,17 @@ export const createTable11 = (eye_photo_id, yes, cannot_grade) => {
             },{
                 headers: accessToken
             })
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const getTable11 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table11Controller.get(`${eye_photo_id}/get`)
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)
@@ -436,6 +557,17 @@ export const createTable12 = (eye_photo_id, lower_2DD, lower_1DD, cannot_grade) 
             },{
                 headers: accessToken
             })
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const getTable12 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table12Controller.get(`${eye_photo_id}/get`)
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)
@@ -512,6 +644,17 @@ export const createTable13 = (
     })
 }
 
+export const getTable13 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table13Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const updateTable13 = (
     eye_photo_id,
     number,
@@ -563,6 +706,7 @@ export const updateTable13 = (
     })
 }
 
+// Delete all
 export const deleteAllTable = (eye_photo_id) => {
     return new Promise(async (resolve, reject) => {
         try {
