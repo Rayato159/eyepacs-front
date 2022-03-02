@@ -16,20 +16,18 @@ import { Provider } from 'react-redux'
 // Components
 import { Login } from './pages/Login'
 import { Home } from './pages/Home'
-import { Sidebar } from './components/Sidebar/Sidebar'
+import { Create } from './pages/Create'
 import { Update } from './pages/Update';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <div className='flex'>
-        <Sidebar />
-          <Routes>
-              <Route path='/' element={<Login />} />
-              <Route path='home' element={<Home />} />
-              <Route path='home/update/:eye_photo_id' element={<Update />}/>
-          </Routes>
-      </div>
+      <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='home' element={<Home />} />
+          <Route path='home/create/:eye_photo_id' element={<Create />}/>
+          <Route path='home/update/:eye_photo_id' element={<Update />}/>
+      </Routes>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
