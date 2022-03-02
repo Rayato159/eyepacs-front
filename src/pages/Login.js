@@ -59,7 +59,7 @@ export const Login = () => {
             <div className='w-96 h-auto'>
                 <div className='flex flex-col space-y-8 shadow-xl p-8 rounded-xl bg-white border border-gray-300'>
                     <div className='text-4xl font-bold'>
-                        Login
+                        EyePACS Login 
                     </div>
                     <form onSubmit={onSubmitHandle} className='flex flex-col space-y-12 w-full'>
 

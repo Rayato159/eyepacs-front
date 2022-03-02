@@ -84,18 +84,12 @@ export const Home = () => {
         fetchEyes(name)
     }, [deleteOne])
 
-    // useEffect(() => {
-    //     if(!localStorage.getItem("accessToken")) {
-    //         navigate('/')
-    //     }
-    // }, [])
-
     const displayEyePhotos = eyes
         .slice(pageVisited, pageVisited + itemsPerPage)
         .map((eye, i) => {
             return (
                 <tr key={eye.eye_photo_id}>
-                    <td className='p-2 text-md text-center border border-black w-20'>{i+1}</td>
+                    <td className='p-2 text-md text-center border border-black w-20'>{pageVisited+i+1}</td>
                     <td className='p-2 text-md text-center border border-black'>{eye.eye_photo_id}</td>
                     <td className='p-2 text-md text-center border border-black w-48'>{eye.created.match(/.*(?=T)/)[0]}</td>
                     <td className='p-2 text-md text-center border border-black w-36'>
