@@ -11,6 +11,7 @@ import {
 } from '../../services/eyeServices'
 
 import {
+    // Create
     createTable1,
     createTable2,
     createTable3,
@@ -24,6 +25,21 @@ import {
     createTable11,
     createTable12,
     createTable13,
+    // Update
+    updateTable1,
+    updateTable2,
+    updateTable3,
+    updateTable4,
+    updateTable5,
+    updateTable6,
+    updateTable7,
+    updateTable8,
+    updateTable9,
+    updateTable10,
+    updateTable11,
+    updateTable12,
+    updateTable13,
+    // Delete
     deleteAllTable,
 } from '../../services/tableServices'
 
