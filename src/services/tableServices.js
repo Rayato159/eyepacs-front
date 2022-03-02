@@ -248,12 +248,12 @@ export const createTable11 = (eye_photo_id, yes, cannot_grade) => {
 }
 
 // Table 12
-export const createTable12 = (eye_photo_id, lower_2DD, upper_1DD, cannot_grade) => {
+export const createTable12 = (eye_photo_id, lower_2DD, lower_1DD, cannot_grade) => {
     return new Promise(async (resolve, reject) => {
         try {
             const res = await table12Controller.post(`${eye_photo_id}/create`,{
                 lower_2DD,
-                upper_1DD,
+                lower_1DD,
                 cannot_grade
             },{
                 headers: accessToken

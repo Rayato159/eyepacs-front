@@ -62,8 +62,7 @@ export const Create = () => {
             </div>
             <div>
                 <EyeForm 
-                    left={left} 
-                    right={right} 
+                    left={left}
                     eye_photo_id={eye_photo_id}
                 />
             </div>
