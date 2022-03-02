@@ -13,7 +13,6 @@ export const Create = () => {
 
     // Eye stete
     const [eye, setEye] = useState(null)
-    const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState("")
 
     // Eye side state

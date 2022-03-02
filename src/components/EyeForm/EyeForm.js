@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 // Services
+import { updateEyeSide } from '../../services/eyeServices'
+
 import {
     createTable1,
     createTable2,
@@ -18,6 +20,10 @@ import {
 } from '../../services/tableServices'
 
 export const EyeForm = ({ left, right, eye_photo_id }) => {
+
+    // General state
+    const [isPending, setIsPending] = useState(false)
+    const [error, setError] = useState("")
 
     // Table 1 State
     const [table1_1, setTable1_1] = useState(false)
@@ -72,6 +78,17 @@ export const EyeForm = ({ left, right, eye_photo_id }) => {
 
     // Table 13 State
     const [select, setSelect] = useState(1)
+
+    // Submit handle
+    const onSubmitHandle = async () => {
+        try {
+            const table1 = await createTable1(table1_1, table1_2)
+            const table2 = await createTable1(table2_1, table2_2)
+            const table3 = await createTable1(table3_1, table3_2)
+        } catch(e) {
+            setError(e.message)
+        }
+    }
 
     return (
         <table className="justify-center table-auto">
@@ -251,7 +268,7 @@ export const EyeForm = ({ left, right, eye_photo_id }) => {
                         </select>
                     </td>
                     <td className="border border-slate-300 p-1 text-center">
-                        <button className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full'>
+                        <button onClick={onSubmitHandle} className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full'>
                             <div className='font-bold text-white'>
                                 Submit
                             </div>
