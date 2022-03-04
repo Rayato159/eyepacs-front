@@ -23,9 +23,9 @@ export const Update = () => {
         try {
             const res = await getEyePhotoById(eye_photo_id)
             setEye(res)
-            setLeft(res.eyeside === 'LEFT'? true: false)
-            setRight(res.eyeside === 'RIGHT'? true: false)
-        } catch(e) {
+            setLeft(res.eyeside === 'LEFT' ? true : false)
+            setRight(res.eyeside === 'RIGHT' ? true : false)
+        } catch (e) {
             setError(e.message)
         }
     }
@@ -50,30 +50,20 @@ export const Update = () => {
                     {eye &&
                         <img
                             className='w-96 h-auto'
-                            src={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`} 
+                            src={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`}
                         />
                     }
                     {/* Form */}
-                    <div className='w-96'>
-                        <table className='w-full table-auto'>
-                            <thead>
-                                <tr className="border-collapse border border-slate-400">
-                                    <td className="p-2 bg-slate-300 text-center font-bold">Left</td>
-                                    <td className="p-2 bg-slate-300 text-center font-bold">Right</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className="border border-slate-300 p-2 text-center"><input checked={left} disabled={right} onChange={() => setLeft(!left)} className='h-5 w-5' type="checkbox" /></td>
-                                    <td className="border border-slate-300 p-2 text-center"><input checked={right} disabled={left} onChange={() => setRight(!right)} className='h-5 w-5' type="checkbox" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    {/* comments */}
+                    <div>
+                        <textarea className='w-96 h-auto' placeholder='Comments'></textarea>
                     </div>
+
+
                 </div>
                 <div>
-                    <EyeFormUpdate 
-                        eyeside={left? 'LEFT': 'RIGHT'}
+                    <EyeFormUpdate
+                        eyeside={left ? 'LEFT' : 'RIGHT'}
                         eye_photo_id={eye_photo_id}
                     />
                 </div>
