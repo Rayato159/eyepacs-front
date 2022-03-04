@@ -405,12 +405,52 @@ export const EyeFormUpdate = ({ eyeside, eye_photo_id }) => {
                                 <option value={2}>Glaucoma</option>
                                 <option value={3}>Occlusion</option>
                                 <option value={4}>Maculopathy</option>
-                                <option value={5}>Other</option>
+                                <option value={0}>Other</option>
                             </select>
                         </td>
                         <td className="border border-slate-300 p-1 text-center">
                         </td>
                     </tr>
+                    <tr>
+                        <td className="border border-slate-300 p-1 text-center">14</td>
+                        <td className="border border-slate-300 p-1 text-left px-4">Side </td>
+
+                        <td className="border border-slate-300 p-1 text-center">
+                            <select className='w-full border border-slate-300 p-1 focus:outline-none'>
+                                <option value={2}>None</option>
+                                <option value={0}>Right</option>
+                                <option value={1}>Left</option>
+                            </select>
+                        </td>
+                        <td className="border border-slate-300 p-1 text-center">
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td className="border border-slate-300 p-1 text-center">15</td>
+                        <td className="border border-slate-300 p-1 text-left px-4">EyePACS  Grading Level</td>
+
+                        <td className="border border-slate-300 p-1 text-center">
+                            <select className='w-full border border-slate-300 p-1 focus:outline-none'>
+                                <option value={0}>No retinopathy</option>
+                                <option value={1}>Mild NPDR </option>
+                                <option value={2}>Moderate NPDR</option>
+                                <option value={3}>Severe NPDR</option>
+                                <option value={4}>PDR</option>
+                                <option value={5}>No macular edema</option>
+                                <option value={6}>Macular edema, not clinically significant</option>
+                                <option value={7}>Macula edema, clinically significant</option>
+
+                            </select>
+                        </td>
+                        <td className="border border-slate-300 p-1 text-center">
+                        </td>
+                    </tr>
+
+
+                    
+                    
                 </tbody>
             </table>
 

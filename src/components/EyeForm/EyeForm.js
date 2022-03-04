@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom' 
+import { useNavigate } from 'react-router-dom'
 
 // Icons
 import { BiErrorCircle } from 'react-icons/bi'
@@ -30,7 +30,7 @@ import {
 export const EyeForm = ({ left, eye_photo_id }) => {
 
     const navigate = useNavigate()
-    const eyeside = left? 'LEFT': 'RIGHT'
+    const eyeside = left ? 'LEFT' : 'RIGHT'
 
     // General state
     const [isPending, setIsPending] = useState(false)
@@ -90,7 +90,7 @@ export const EyeForm = ({ left, eye_photo_id }) => {
 
     // Table 13 State
     const [select, setSelect] = useState(1)
-    
+
     // Clear state
     const onClearHandle = () => {
         window.location.reload()
@@ -118,7 +118,7 @@ export const EyeForm = ({ left, eye_photo_id }) => {
             setIsPending(false)
             setError("")
             setIsCompleted(true)
-        } catch(e) {
+        } catch (e) {
             const deleteTable = await deleteAllTable(eye_photo_id)
             setError(e.message)
             setIsPending(false)
@@ -126,7 +126,7 @@ export const EyeForm = ({ left, eye_photo_id }) => {
     }
 
     useEffect(() => {
-        if(isCompleted) {
+        if (isCompleted) {
             navigate('/home')
         }
     }, [isCompleted])
@@ -306,12 +306,52 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                                 <option value={2}>Glaucoma</option>
                                 <option value={3}>Occlusion</option>
                                 <option value={4}>Maculopathy</option>
-                                <option value={5}>Other</option>
+                                <option value={0}>Other</option>
                             </select>
                         </td>
                         <td className="border border-slate-300 p-1 text-center">
                         </td>
                     </tr>
+
+                    <tr>
+                        <td className="border border-slate-300 p-1 text-center">14</td>
+                        <td className="border border-slate-300 p-1 text-left px-4">Side </td>
+
+                        <td className="border border-slate-300 p-1 text-center">
+                            <select onChange={(e) => setSelect(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                                <option value={2}>None</option>
+                                <option value={0}>Right</option>
+                                <option value={1}>Left</option>
+                            </select>
+                        </td>
+                        <td className="border border-slate-300 p-1 text-center">
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td className="border border-slate-300 p-1 text-center">15</td>
+                        <td className="border border-slate-300 p-1 text-left px-4">EyePACS  Grading Level</td>
+
+                        <td className="border border-slate-300 p-1 text-center">
+                            <select onChange={(e) => setSelect(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                                <option value={0}>No retinopathy</option>
+                                <option value={1}>Mild NPDR </option>
+                                <option value={2}>Moderate NPDR</option>
+                                <option value={3}>Severe NPDR</option>
+                                <option value={4}>PDR</option>
+                                <option value={5}>No macular edema</option>
+                                <option value={6}>Macular edema, not clinically significant</option>
+                                <option value={7}>Macula edema, clinically significant</option>
+
+                            </select>
+                        </td>
+                        <td className="border border-slate-300 p-1 text-center">
+                        </td>
+                    </tr>
+
+
+
                 </tbody>
             </table>
 
@@ -319,7 +359,7 @@ export const EyeForm = ({ left, eye_photo_id }) => {
             {error &&
                 <div className='flex space-x-2 items-center'>
                     <div>
-                        <BiErrorCircle className='text-red-500 h-5 w-5'/>
+                        <BiErrorCircle className='text-red-500 h-5 w-5' />
                     </div>
                     <div className='text-red-500 text-md'>
                         {error}
@@ -332,7 +372,7 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                         Clear All
                     </div>
                 </button>
-                {isPending?
+                {isPending ?
                     <button disabled className='py-2 px-4 disabled:bg-trustworthy-500 rounded-full'>
                         <div className='font-bold text-white'>
                             LOADING...
