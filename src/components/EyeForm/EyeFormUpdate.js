@@ -117,6 +117,19 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
     const [getEyeError, setGetEyeError] = useState("")
     const fetchEyeSetting = async () => {
         try {
+            // Fetch eye
+            const table1Res = await getTable1(eye_photo_id)
+            setTable1_1(table1Res.value === 1? true: false)
+            setTable1_2(table1Res.value === 0? true: false)
+
+            const table2Res = await getTable2(eye_photo_id)
+            setTable2_1(table2Res.value === 1? true: false)
+            setTable2_2(table2Res.value === 0? true: false)
+
+            const table3Res = await getTable3(eye_photo_id)
+            setTable3_1(table3Res.value === 1? true: false)
+            setTable3_2(table3Res.value === 0? true: false)
+
             setGetEyeError("")
         } catch(e) {
             setGetEyeError(e.message)
@@ -179,23 +192,23 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">1</td>
                         <td className="border border-slate-300 p-1 text-left px-4">No apparent diabetic retionpathy</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable1_1(!table1_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable1_2(!table1_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table1_1} disabled={table1_2} onChange={() => setTable1_1(!table1_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table1_2} disabled={table1_1} onChange={() => setTable1_2(!table1_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">2</td>
                         <td className="border border-slate-300 p-1 text-left px-4"> Microaneurysms ONLY (MA)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable2_1(!table2_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable2_2(!table2_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table2_1} disabled={table2_2} onChange={() => setTable2_1(!table2_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table2_2} disabled={table2_1} onChange={() => setTable2_2(!table2_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">3</td>
                         <td className="border border-slate-300 p-1 text-left px-4"> Cotton wool spts (CW)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable3_1(!table3_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable3_2(!table3_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table3_1} disabled={table3_2} onChange={() => setTable3_1(!table3_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table3_2} disabled={table3_1} onChange={() => setTable3_2(!table3_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
 
@@ -379,10 +392,6 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-center">
                         </td>
                     </tr>
-
-
-                    
-                    
                 </tbody>
             </table>
 
