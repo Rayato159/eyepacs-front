@@ -42,6 +42,7 @@ import {
     updateTable13,
     updateTable14,
 } from '../../services/tableServices'
+import { updateComment } from '../../services/commentServices'
 
 export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
 
@@ -154,6 +155,23 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
             setTable11_1(table11Res.value === 1? true: false)
             setTable11_2(table11Res.value === 0? true: false)
 
+            // Special Table
+            const table4Res = await getTable4(eye_photo_id)
+            setLower2a(table4Res.value === 0? true: false)
+            setUpper2a(table4Res.value === 1? true: false)
+            setCannotGrade2a(table4Res.value === 2? true: false)
+
+            const table6Res = await getTable6(eye_photo_id)
+            setLower8a(table6Res.value === 0? true: false)
+            setUpper8a(table6Res.value === 1? true: false)
+            setCannotGrade8a(table6Res.value === 2? true: false)
+
+            const table12Res = await getTable12(eye_photo_id)
+            setLower2DD(table12Res.value === 0? true: false)
+            setLower1DD(table12Res.value === 1? true: false)
+            setCannotGradeDD(table12Res.value === 2? true: false)
+
+            // Select table
             const table13Res = await getTable13(eye_photo_id)
             setSelectOther(table13Res.value)
 
@@ -188,6 +206,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
             const table12 = await updateTable12(eye_photo_id, lower2DD, lower1DD, cannotGradeDD)
             const table13 = await updateTable13(eye_photo_id, selectOther)
             const table14 = await updateTable14(eye_photo_id, selectTable14)
+            const commentUpdate = await updateComment(eye_photo_id, comments)
             const eyesideUpdate = await updateEyeSide(eye_photo_id, selectEyeSide)
             setIsPending(false)
             setError("")
@@ -254,12 +273,12 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                                 <tbody>
                                     <tr>
                                         <td className="border border-slate-300 p-1">
-                                            <input onChange={() => setLower2a(!lower2a)} className='h-5 w-5' type="checkbox" ></input>
+                                            <input checked={lower2a} disabled={upper2a || cannotGrade2a} onChange={() => setLower2a(!lower2a)} className='h-5 w-5' type="checkbox" ></input>
                                             <label>{`<2a`}</label>
                                         </td>
 
                                         <td className="border border-slate-300 p-1 ">
-                                            <input onChange={() => setUpper2a(!upper2a)} className='h-5 w-5' type="checkbox"></input>
+                                            <input checked={upper2a} disabled={lower2a || cannotGrade2a} onChange={() => setUpper2a(!upper2a)} className='h-5 w-5' type="checkbox"></input>
                                             <label>{`2a>`}</label>
                                         </td>
                                     </tr>
@@ -268,7 +287,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                         </td>
 
                         <td className="border border-slate-300 p-1 text-center">
-                            <input onChange={() => setCannotGrade2a(!cannotGrade2a)} className='h-5 w-5' type="checkbox"></input>
+                            <input checked={cannotGrade2a} disabled={lower2a || upper2a} onChange={() => setCannotGrade2a(!cannotGrade2a)} className='h-5 w-5' type="checkbox"></input>
                         </td>
                     </tr>
 
@@ -290,12 +309,12 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                                     <tbody>
                                         <tr>
                                             <td className="border border-slate-300 p-1" >
-                                                <input onChange={() => setLower8a(!lower8a)} className='h-5 w-5' type="checkbox" ></input>
+                                                <input checked={lower8a} disabled={upper8a || cannotGrade8a} onChange={() => setLower8a(!lower8a)} className='h-5 w-5' type="checkbox" ></input>
                                                 <label>{`<8a`}</label>
                                             </td>
 
                                             <td className="border border-slate-300 p-1 ">
-                                                <input onChange={() => setUpper8a(!upper8a)} className='h-5 w-5' type="checkbox"></input>
+                                                <input checked={upper8a} disabled={lower8a || cannotGrade8a} onChange={() => setUpper8a(!upper8a)} className='h-5 w-5' type="checkbox"></input>
                                                 <label>{`8a>`}</label>
                                             </td>
                                         </tr>
@@ -304,7 +323,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                             </div>
                         </td>
                         <td className="border border-slate-300 p-1 text-center">
-                            <input onChange={() => setCannotGrade8a(!cannotGrade8a)} className='h-5 w-5' type="checkbox"></input>
+                            <input checked={cannotGrade8a} disabled={lower8a || upper8a} onChange={() => setCannotGrade8a(!cannotGrade8a)} className='h-5 w-5' type="checkbox"></input>
                         </td>
                     </tr>
 
@@ -356,11 +375,11 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                                     <tbody>
                                         <tr>
                                             <td className="border border-slate-300 p-1">
-                                                <input  onChange={() => setLower2DD(!lower2DD)} className='h-5 w-5' type="checkbox" ></input>
+                                                <input checked={lower2DD} disabled={lower1DD || cannotGradeDD} onChange={() => setLower2DD(!lower2DD)} className='h-5 w-5' type="checkbox" ></input>
                                                 <label>{`<2DD`}</label>
                                             </td>
                                             <td className="border border-slate-300 p-1 ">
-                                                <input onChange={() => setLower1DD(!lower1DD)} className='h-5 w-5' type="checkbox"></input>
+                                                <input checked={lower1DD} disabled={lower2DD || cannotGradeDD} onChange={() => setLower1DD(!lower1DD)} className='h-5 w-5' type="checkbox"></input>
                                                 <label>{`<1DD`}</label>
                                             </td>
                                         </tr>
@@ -369,7 +388,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                             </div>
                         </td>
                         <td className="border border-slate-300 p-1 text-center">
-                            <input onChange={() => setCannotGradeDD(!cannotGradeDD)} className='h-5 w-5' type="checkbox"></input>
+                            <input checked={cannotGradeDD} disabled={lower2DD || lower1DD} onChange={() => setCannotGradeDD(!cannotGradeDD)} className='h-5 w-5' type="checkbox"></input>
                         </td>
                     </tr>
 
