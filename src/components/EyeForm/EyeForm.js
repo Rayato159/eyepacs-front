@@ -24,13 +24,14 @@ import {
     createTable11,
     createTable12,
     createTable13,
+    createTable14,
     deleteAllTable,
 } from '../../services/tableServices'
+import { createComment } from '../../services/commentServices'
 
-export const EyeForm = ({ left, eye_photo_id }) => {
+export const EyeForm = ({ comments, eye_photo_id }) => {
 
     const navigate = useNavigate()
-    const eyeside = left ? 'LEFT' : 'RIGHT'
 
     // General state
     const [isPending, setIsPending] = useState(false)
@@ -88,8 +89,10 @@ export const EyeForm = ({ left, eye_photo_id }) => {
     const [lower1DD, setLower1DD] = useState(false)
     const [cannotGradeDD, setCannotGradeDD] = useState(false)
 
-    // Table 13 State
-    const [select, setSelect] = useState(1)
+    // Table 13, eyeside, 14 State
+    const [selectOther, setSelectOther] = useState(1)
+    const [selectEyeSide, setSelectEyeSide] = useState(2)
+    const [selectTable14, setSelectTable14] = useState(1)
 
     // Clear state
     const onClearHandle = () => {
@@ -112,8 +115,10 @@ export const EyeForm = ({ left, eye_photo_id }) => {
             const table10 = await createTable10(eye_photo_id, table10_1, table10_2)
             const table11 = await createTable11(eye_photo_id, table11_1, table11_2)
             const table12 = await createTable12(eye_photo_id, lower2DD, lower1DD, cannotGradeDD)
-            const table13 = await createTable13(eye_photo_id, select)
-            const eyesideUpdate = await updateEyeSide(eye_photo_id, eyeside)
+            const table13 = await createTable13(eye_photo_id, selectOther)
+            const table14 = await createTable14(eye_photo_id, selectTable14)
+            const eyesideUpdate = await updateEyeSide(eye_photo_id, selectEyeSide)
+            const commentCreate = await createComment(eye_photo_id, comments)
             const statusUpdate = await updateEyeStatus(eye_photo_id)
             setIsPending(false)
             setError("")
@@ -301,7 +306,8 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-left px-4">Other referrable conditions in either eye:</td>
 
                         <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => setSelect(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            {/* Need Fix */}
+                            <select onChange={(e) => setSelectOther(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                                 <option value={1}>Cataract</option>
                                 <option value={2}>Glaucoma</option>
                                 <option value={3}>Occlusion</option>
@@ -318,7 +324,8 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-left px-4">Side </td>
 
                         <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => setSelect(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            {/* Need Fix */}
+                            <select onChange={(e) => setSelectEyeSide(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                                 <option value={2}>None</option>
                                 <option value={0}>Right</option>
                                 <option value={1}>Left</option>
@@ -333,8 +340,9 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-center">15</td>
                         <td className="border border-slate-300 p-1 text-left px-4">EyePACS  Grading Level</td>
 
+                        {/* Need Fix */}
                         <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => setSelect(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            <select onChange={(e) => setSelectTable14(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                                 <option value={0}>No retinopathy</option>
                                 <option value={1}>Mild NPDR </option>
                                 <option value={2}>Moderate NPDR</option>
@@ -343,7 +351,6 @@ export const EyeForm = ({ left, eye_photo_id }) => {
                                 <option value={5}>No macular edema</option>
                                 <option value={6}>Macular edema, not clinically significant</option>
                                 <option value={7}>Macula edema, clinically significant</option>
-
                             </select>
                         </td>
                         <td className="border border-slate-300 p-1 text-center">

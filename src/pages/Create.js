@@ -15,9 +15,8 @@ export const Create = () => {
     const [eye, setEye] = useState(null)
     const [error, setError] = useState("")
 
-    // Eye side state
-    const [left, setLeft] = useState(false)
-    const [right, setRight] = useState(false)
+    // Comments
+    const [comments, setComments] = useState("")
 
     const fetchEye = async (eye_photo_id) => {
         try {
@@ -51,18 +50,14 @@ export const Create = () => {
                             src={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`}
                         />
                     }
-                    {/* Form */}
                     {/* comments */}
                     <div>
-                        <textarea className='w-96 h-auto' placeholder='Comments'></textarea>
+                        <textarea onChange={(e) => setComments(e.target.value)} className='w-96 h-auto border border-black p-2' placeholder='Comments'></textarea>
                     </div>
-
-
-
                 </div>
                 <div>
                     <EyeForm
-                        left={left}
+                        comments={comments}
                         eye_photo_id={eye_photo_id}
                     />
                 </div>

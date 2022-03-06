@@ -124,13 +124,13 @@ export const Home = () => {
                     <table className='table-auto w-full text-xl divide-y divide-gray-200 '>
                         <thead className='bg-gray-50'>
                             <tr className='bg-trustworthy-300'>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase '>No.</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase '>Photo ID</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase '>Created</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase '>Status</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase '>Create</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase '>Update</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase '>Delete</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>No.</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Photo ID</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Created</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Status</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Create</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Update</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Delete</td>
                             </tr>
                         </thead>
                         <tbody >
@@ -144,7 +144,7 @@ export const Home = () => {
                             </button>
                         </div>
                     }
-                    <ReactPaginate className='fixed bottom-0 py-6 flex space-x-6 items-center justify-center text-black text-md font-bold w-full'
+                    <ReactPaginate className='bottom-0 py-6 flex space-x-6 items-center justify-center text-black text-md font-bold w-full'
                         previousLabel={<IoIosArrowBack className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded' />}
                         nextLabel={<IoIosArrowForward className='h-8 w-8 px-2 py-1 bg-teal-400 hover:bg-teal-500 rounded' />}
                         pageCount={pageCount}

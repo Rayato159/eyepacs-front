@@ -53,6 +53,10 @@ const table13Controller = axios.create({
     baseURL: 'http://localhost:3000/api/table-13'
 })
 
+const table14Controller = axios.create({
+    baseURL: 'http://localhost:3000/api/table-14'
+})
+
 
 // Token
 const accessToken = { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` }
@@ -593,48 +597,11 @@ export const updateTable12 = (eye_photo_id, lower_2DD, lower_1DD, cannot_grade) 
 }
 
 // Table 13
-export const createTable13 = (
-    eye_photo_id,
-    number,
-) => {
-    // Varible 1 - 5
-    let cataract = false
-    let glaucoma = false
-    let occlusion = false
-    let maculopathy = false
-    let other = false
-
-    // Check which one is true!!!
-    switch(number) {
-        case 1:
-            cataract = true
-            break
-        case 2:
-            glaucoma = true
-            break
-        case 3:
-            occlusion = true
-            break
-        case 4:
-            maculopathy = true
-            break;
-        case 5:
-            other = true
-            break
-    }
-
-    let items = {
-        cataract,
-        glaucoma,
-        occlusion,
-        maculopathy,
-        other
-    }
-
+export const createTable13 = (eye_photo_id, value) => {
     return new Promise(async (resolve, reject) => {
         try {
             const res = await table13Controller.post(`${eye_photo_id}/create`,
-                items,
+                { value },
                 { headers: accessToken },
             )
             resolve(res.data)
@@ -655,48 +622,51 @@ export const getTable13 = (eye_photo_id) => {
     })
 }
 
-export const updateTable13 = (
-    eye_photo_id,
-    number,
-) => {
-    // Varible 1 - 5
-    let cataract = false
-    let glaucoma = false
-    let occlusion = false
-    let maculopathy = false
-    let other = false
-
-    // Check which one is true!!!
-    switch(number) {
-        case 1:
-            cataract = true
-            break
-        case 2:
-            glaucoma = true
-            break
-        case 3:
-            occlusion = true
-            break
-        case 4:
-            maculopathy = true
-            break;
-        case 5:
-            other = true
-            break
-    }
-
-    let items = {
-        cataract,
-        glaucoma,
-        occlusion,
-        maculopathy,
-        other
-    }
-
+export const updateTable13 = (eye_photo_id, value) => {
     return new Promise(async (resolve, reject) => {
         try {
             const res = await table13Controller.patch(`${eye_photo_id}/update`,
-                items,
+                { value },
+                { headers: accessToken },
+            )
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+// Table 14
+export const createTable14 = (eye_photo_id, value) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table14Controller.post(`${eye_photo_id}/create`,
+                { value },
+                { headers: accessToken },
+            )
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const getTable14 = (eye_photo_id) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table14Controller.get(`${eye_photo_id}/get`)
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
+export const updateTable14 = (eye_photo_id, value) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await table14Controller.patch(`${eye_photo_id}/update`,
+                { value },
                 { headers: accessToken },
             )
             resolve(res.data)
