@@ -364,7 +364,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-left px-4">EyePACS  Grading Level</td>
 
                         <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => selectTable14(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            <select onChange={(e) => setSelectTable14(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                                 <option value={0}>No retinopathy</option>
                                 <option value={1}>Mild NPDR </option>
                                 <option value={2}>Moderate NPDR</option>
