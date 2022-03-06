@@ -63,7 +63,7 @@ export const Update = () => {
                     }
                     {/* comments */}
                     <div>
-                        <textarea onChange={(e) => setComments(e.target.value)} className='w-96 h-auto border border-black p-2' placeholder={comments}></textarea>
+                        <textarea value={comments} onChange={(e) => setComments(e.target.value)} className='w-96 h-auto border border-black p-2'></textarea>
                     </div>
                 </div>
                 <div>
