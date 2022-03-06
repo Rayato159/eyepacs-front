@@ -10,7 +10,7 @@ export const createComment = (eye_photo_id, description) => {
     return new Promise(async (resolve, reject) => {
         try {
             const res = await commentsController.post(`${eye_photo_id}/create`,{
-                description,
+                description: description? description:"none",
             },{
                 headers: accessToken
             })

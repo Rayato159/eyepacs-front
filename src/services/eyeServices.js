@@ -90,6 +90,18 @@ export const deleteEyePhotoOne = (eye_photo_id) => {
     })
 }
 
+export const exportEyeData = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const res = await axios.get('http://localhost:3000/api/eye-data')
+            window.open('http://localhost:3000/api/eye-data')
+            resolve(res.data)
+        } catch(e) {
+            reject(e.response.data)
+        }
+    })
+}
+
 export const deleteEyePhotosAll = () => {
     return new Promise(async (resolve, reject) => {
         try {
