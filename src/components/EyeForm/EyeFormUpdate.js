@@ -154,6 +154,15 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
             setTable11_1(table11Res.value === 1? true: false)
             setTable11_2(table11Res.value === 0? true: false)
 
+            const table13Res = await getTable13(eye_photo_id)
+            setSelectOther(table13Res.value)
+
+            const table14Res = await getTable14(eye_photo_id)
+            setSelectTable14(table14Res.value)
+
+            const getEyeSide = await getTable1(eye_photo_id)
+            setSelectEyeSide(getEyeSide.eye_photo.eyeside)
+
             setGetEyeError("")
         } catch(e) {
             setGetEyeError(e.message)
@@ -369,7 +378,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-left px-4">Other referrable conditions in either eye:</td>
 
                         <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => setSelectOther(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            <select value={selectOther} onChange={(e) => setSelectOther(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                                 <option value={1}>Cataract</option>
                                 <option value={2}>Glaucoma</option>
                                 <option value={3}>Occlusion</option>
@@ -385,7 +394,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-left px-4">Side </td>
 
                         <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => setSelectEyeSide(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            <select value={selectEyeSide} onChange={(e) => setSelectEyeSide(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                                 <option value={2}>None</option>
                                 <option value={0}>Right</option>
                                 <option value={1}>Left</option>
@@ -401,7 +410,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                         <td className="border border-slate-300 p-1 text-left px-4">EyePACS  Grading Level</td>
 
                         <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => setSelectTable14(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            <select value={selectTable14} onChange={(e) => setSelectTable14(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
                                 <option value={0}>No retinopathy</option>
                                 <option value={1}>Mild NPDR </option>
                                 <option value={2}>Moderate NPDR</option>
