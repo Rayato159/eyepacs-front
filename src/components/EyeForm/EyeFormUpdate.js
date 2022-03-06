@@ -117,7 +117,7 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
     const [getEyeError, setGetEyeError] = useState("")
     const fetchEyeSetting = async () => {
         try {
-            // Fetch eye
+            // Generral Table
             const table1Res = await getTable1(eye_photo_id)
             setTable1_1(table1Res.value === 1? true: false)
             setTable1_2(table1Res.value === 0? true: false)
@@ -129,6 +129,30 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
             const table3Res = await getTable3(eye_photo_id)
             setTable3_1(table3Res.value === 1? true: false)
             setTable3_2(table3Res.value === 0? true: false)
+
+            const table5Res = await getTable5(eye_photo_id)
+            setTable5_1(table5Res.value === 1? true: false)
+            setTable5_2(table5Res.value === 0? true: false)
+
+            const table7Res = await getTable7(eye_photo_id)
+            setTable7_1(table7Res.value === 1? true: false)
+            setTable7_2(table7Res.value === 0? true: false)
+
+            const table8Res = await getTable8(eye_photo_id)
+            setTable8_1(table8Res.value === 1? true: false)
+            setTable8_2(table8Res.value === 0? true: false)
+
+            const table9Res = await getTable9(eye_photo_id)
+            setTable9_1(table9Res.value === 1? true: false)
+            setTable9_2(table9Res.value === 0? true: false)
+
+            const table10Res = await getTable10(eye_photo_id)
+            setTable10_1(table10Res.value === 1? true: false)
+            setTable10_2(table10Res.value === 0? true: false)
+
+            const table11Res = await getTable11(eye_photo_id)
+            setTable11_1(table11Res.value === 1? true: false)
+            setTable11_2(table11Res.value === 0? true: false)
 
             setGetEyeError("")
         } catch(e) {
@@ -243,8 +267,8 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">5</td>
                         <td className="border border-slate-300 p-1 text-left px-4">Difinite Venous Beading 6a</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable5_1(!table5_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable5_2(!table5_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table5_1} disabled={table5_2} onChange={() => setTable5_1(!table5_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table5_2} disabled={table5_1} onChange={() => setTable5_2(!table5_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
@@ -279,38 +303,38 @@ export const EyeFormUpdate = ({ comments, eye_photo_id }) => {
                     <tr >
                         <td className="border border-slate-300 p-1 text-center">7</td>
                         <td className="border border-slate-300 p-1 text-left px-4">New vessels (NV) or Fibrous Proliferation (FP)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable7_1(!table7_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable7_2(!table7_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table7_1} disabled={table7_2} onChange={() => setTable7_1(!table7_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table7_2} disabled={table7_1} onChange={() => setTable7_2(!table7_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">8</td>
                         <td className="border border-slate-300 p-1 text-left px-4">Preretinal (PRH) or vitreous (VH) hemorrhage</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable8_1(!table8_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable8_2(!table8_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table8_1} disabled={table8_2} onChange={() => setTable8_1(!table8_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table8_2} disabled={table8_1} onChange={() => setTable8_2(!table8_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">9</td>
                         <td className="border border-slate-300 p-1 text-left px-4">Panretinal laser scars present</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable9_1(!table9_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable9_2(!table9_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table9_1} disabled={table9_2} onChange={() => setTable9_1(!table9_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table9_2} disabled={table9_1} onChange={() => setTable9_2(!table9_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">10</td>
                         <td className="border border-slate-300 p-1 text-left px-4">Focal laser scars present</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable10_1(!table10_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable10_2(!table10_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table10_1} disabled={table10_2} onChange={() => setTable10_1(!table10_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table10_2} disabled={table10_1} onChange={() => setTable10_2(!table10_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
                         <td className="border border-slate-300 p-1 text-center">11</td>
                         <td className="border border-slate-300 p-1 text-left px-4">Hard exudates (HE) present anywhere</td>
-                        <td className="border border-slate-300 p-1 text-center"><input onChange={() => setTable11_1(!table11_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"  ><input onChange={() => setTable11_2(!table11_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"><input checked={table11_1} disabled={table11_2} onChange={() => setTable11_1(!table11_1)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 p-1 text-center"  ><input checked={table11_2} disabled={table11_1} onChange={() => setTable11_2(!table11_2)} className='h-5 w-5' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
