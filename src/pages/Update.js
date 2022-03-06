@@ -7,6 +7,7 @@ import { EyeFormUpdate } from '../components/EyeForm/EyeFormUpdate'
 // Services
 import { getEyePhotoById } from '../services/eyeServices'
 import { getComment } from '../services/commentServices'
+import NavBar from '../components/Navbar/NavBar';
 
 export const Update = () => {
     // Get params
@@ -43,8 +44,13 @@ export const Update = () => {
     }, [])
 
     return (
+
         <div className='aspect-video'>
+            <div>
+                <NavBar />
+            </div>
             <div className='flex items-center justify-center h-screen w-full space-x-32'>
+
                 <div className='flex flex-col space-y-4'>
                     {/* Image ID */}
                     {eye &&
