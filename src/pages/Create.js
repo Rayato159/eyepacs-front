@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 // Components
 import { EyeForm } from '../components/EyeForm/EyeForm'
+import NavBar from '../components/Navbar/NavBar';
 
 // Services
 import { getEyePhotoById } from '../services/eyeServices'
@@ -32,7 +33,11 @@ export const Create = () => {
     }, [])
 
     return (
+
         <div className='aspect-video'>
+            <div>
+                <NavBar />
+            </div>
             <div className='flex items-center justify-center h-screen w-full space-x-32'>
                 <div className='flex flex-col space-y-4'>
                     {/* Image ID */}
