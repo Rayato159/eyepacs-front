@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import NavBar from '../components/Navbar/NavBar';
 
 // Paginate
 import ReactPaginate from 'react-paginate';
@@ -94,7 +95,7 @@ export const Home = () => {
                     <td className='p-2 text-sm text-center font-medium border border-gray-100 w-48'>{eye.created.match(/.*(?=T)/)[0]}</td>
                     <td className='p-2 text-sm text-center font-medium border border-gray-100 w-36'>
                         <div className={eye.status === 'IN_PROGRESS' ? `bg-yellow-400 px-2 py-1 rounded-md animate-pulse` : `bg-green-400 px-2 py-1 rounded-md`}>
-                            {eye.status === 'IN_PROGRESS'? 'PROGRESSING':'DONE'}
+                            {eye.status === 'IN_PROGRESS' ? 'PROGRESSING' : 'DONE'}
                         </div>
                     </td>
                     <td className='p-2 text-sm text-center border border-gray-100 w-36'>
@@ -118,6 +119,9 @@ export const Home = () => {
 
     return (
         <div className='w-full'>
+            <div>
+                <NavBar/>
+            </div>
 
             <div className='align-middle inline-block w-full '>
                 <div className='shadow-md border-b  border-gray-200 sm:rounded-lg'>

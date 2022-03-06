@@ -133,9 +133,9 @@ export const EyeForm = ({ left, eye_photo_id }) => {
 
     return (
         <div className='flex flex-col space-y-4'>
-            <table className="justify-center table-auto">
+            <table className="justify-center table-auto ">
                 <thead>
-                    <tr className="border-collapse border border-slate-400">
+                    <tr className="border-collapse border border-slate-400 ">
                         <th className="p-2 bg-trustworthy-300">No.</th>
                         <th className="p-2 bg-trustworthy-300">EyePACS GRADING GUIDELINES</th>
                         <th className="p-2 bg-trustworthy-300">YES</th>
