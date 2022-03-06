@@ -42,7 +42,7 @@ export const Update = () => {
         fetchEye(eye_photo_id)
         fetchComment(eye_photo_id)
     }, [])
-
+    
     return (
 
         <div className='aspect-video'>

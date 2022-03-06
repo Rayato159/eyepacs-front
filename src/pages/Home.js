@@ -10,6 +10,7 @@ import {
     getEyes,
     deleteEyePhotosAll,
     deleteEyePhotoOne,
+    exportEyeData,
 } from '../services/eyeServices'
 
 // Icons
@@ -41,6 +42,14 @@ export const Home = () => {
             } catch (e) {
                 setError(e.message)
             }
+        }
+    }
+
+    const onExportHandle = async () => {
+        try {
+            const res = await exportEyeData()
+        } catch (e) {
+            setError(e.message)
         }
     }
 
@@ -142,7 +151,11 @@ export const Home = () => {
                         </tbody>
                     </table>
                     {eyes.length > 0 &&
-                        <div className='w-full flex justify-end py-6 px-7'>
+                    
+                        <div className='w-full flex space-x-4 justify-end py-6 px-7'>
+                            <button onClick={() => onExportHandle()} className='bg-green-400 hover:bg-green-500 px-4 py-2 text-white rounded-md'>
+                                Download to CSV
+                            </button>
                             <button onClick={() => onDeleteAllHandle()} className='bg-red-400 hover:bg-red-500 px-4 py-2 text-white rounded-md'>
                                 Delete All
                             </button>
