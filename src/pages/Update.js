@@ -6,6 +6,7 @@ import { EyeFormUpdate } from '../components/EyeForm/EyeFormUpdate'
 
 // Services
 import { getEyePhotoById } from '../services/eyeServices'
+import { getComment } from '../services/commentServices'
 
 export const Update = () => {
     // Get params
@@ -27,8 +28,18 @@ export const Update = () => {
         }
     }
 
+    const fetchComment = async (eye_photo_id) => {
+        try {
+            const res = await getComment(eye_photo_id)
+            setComments(res.description)
+        } catch(e) {
+            setError(e.message)
+        }
+    }
+
     useEffect(() => {
         fetchEye(eye_photo_id)
+        fetchComment(eye_photo_id)
     }, [])
 
     return (
@@ -52,7 +63,7 @@ export const Update = () => {
                     }
                     {/* comments */}
                     <div>
-                        <textarea onChange={(e) => setComments(e.target.value)} className='w-96 h-auto border border-black p-2' placeholder='Comments'></textarea>
+                        <textarea value={comments} onChange={(e) => setComments(e.target.value)} className='w-96 h-auto border border-black p-2'></textarea>
                     </div>
                 </div>
                 <div>
