@@ -10,7 +10,7 @@ export const DropZone = ({ props, msg }) => {
     getRootProps,
     getInputProps
   } = useDropzone({
-    accept: 'image/jpeg, image/png, image/jpg, image/gif'
+    accept: 'image/jpeg, image/png, image/jpg, image/gif, image/tiff'
   })
   
   useEffect(() => {
