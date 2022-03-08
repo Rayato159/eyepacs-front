@@ -29,9 +29,12 @@ import {
 } from '../../services/tableServices'
 import { createComment } from '../../services/commentServices'
 
-export const EyeForm = ({ comments, eye_photo_id }) => {
+export const EyeForm = ({ eye_photo_id }) => {
 
     const navigate = useNavigate()
+
+    // Comments
+    const [comments, setComments] = useState("")
 
     // General state
     const [isPending, setIsPending] = useState(false)
@@ -90,9 +93,9 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
     const [cannotGradeDD, setCannotGradeDD] = useState(false)
 
     // Table 13, eyeside, 14 State
-    const [selectOther, setSelectOther] = useState(1)
+    const [selectOther, setSelectOther] = useState(0)
     const [selectEyeSide, setSelectEyeSide] = useState(2)
-    const [selectTable14, setSelectTable14] = useState(1)
+    const [selectTable14, setSelectTable14] = useState(0)
 
     // Clear state
     const onClearHandle = () => {
@@ -138,56 +141,64 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
 
     return (
         <div className='flex flex-col space-y-4'>
+            {/* Image ID */}
+            {eye_photo_id &&
+                <div className='bg-blue-400 p-2 rounded-lg'>
+                    <div className='flex justify-center text-2xl font-bold text-white'>
+                        {eye_photo_id}
+                    </div>
+                </div>
+            }
             <table className="justify-center table-auto ">
                 <thead>
                     <tr className="border-collapse border border-slate-400 ">
-                        <th className="p-2 bg-trustworthy-300">No.</th>
-                        <th className="p-2 bg-trustworthy-300">EyePACS GRADING GUIDELINES</th>
-                        <th className="p-2 bg-trustworthy-300">YES</th>
-                        <th className="p-2 bg-trustworthy-300">Cannot Grade</th>
+                        <th className="bg-trustworthy-300">No.</th>
+                        <th className="bg-trustworthy-300">EyePACS GRADING GUIDELINES</th>
+                        <th className="bg-trustworthy-300">YES</th>
+                        <th className="bg-trustworthy-300">Cannot Grade</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">1</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">No apparent diabetic retionpathy</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table1_2} onChange={() => setTable1_1(!table1_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table1_1} onChange={() => setTable1_2(!table1_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">1</td>
+                        <td className="border border-slate-300 text-left px-4">No apparent diabetic retionpathy</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table1_2} onChange={() => setTable1_1(!table1_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table1_1} onChange={() => setTable1_2(!table1_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">2</td>
-                        <td className="border border-slate-300 p-1 text-left px-4"> Microaneurysms ONLY (MA)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table2_2} onChange={() => setTable2_1(!table2_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table2_1} onChange={() => setTable2_2(!table2_2)} className='h-5 w-5' type="checkbox"></input></td>
-                    </tr>
-
-
-                    <tr>
-                        <td className="border border-slate-300 p-1 text-center">3</td>
-                        <td className="border border-slate-300 p-1 text-left px-4"> Cotton wool spts (CW)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table3_2} onChange={() => setTable3_1(!table3_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table3_1} onChange={() => setTable3_2(!table3_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">2</td>
+                        <td className="border border-slate-300 text-left px-4"> Microaneurysms ONLY (MA)</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table2_2} onChange={() => setTable2_1(!table2_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table2_1} onChange={() => setTable2_2(!table2_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">4</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Hemorrhages with or without MA (HMA) 2a</td>
+                        <td className="border border-slate-300 text-center">3</td>
+                        <td className="border border-slate-300 text-left px-4"> Cotton wool spts (CW)</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table3_2} onChange={() => setTable3_1(!table3_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table3_1} onChange={() => setTable3_2(!table3_2)} className='h-4 w-4' type="checkbox"></input></td>
+                    </tr>
 
-                        <td className="border border-slate-300 p-1 flex space-x-2 justify-center">
+
+                    <tr>
+                        <td className="border border-slate-300 text-center">4</td>
+                        <td className="border border-slate-300 text-left px-4">Hemorrhages with or without MA (HMA) 2a</td>
+
+                        <td className="border border-slate-300 flex space-x-2 justify-center">
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td className="border border-slate-300 p-1">
-                                            <input disabled={upper2a || cannotGrade2a} onChange={() => setLower2a(!lower2a)} className='h-5 w-5' type="checkbox" ></input>
+                                        <td className="border border-slate-300">
+                                            <input disabled={upper2a || cannotGrade2a} onChange={() => setLower2a(!lower2a)} className='h-4 w-4' type="checkbox" ></input>
                                             <label>{`<2a`}</label>
                                         </td>
 
-                                        <td className="border border-slate-300 p-1 ">
-                                            <input disabled={lower2a || cannotGrade2a} onChange={() => setUpper2a(!upper2a)} className='h-5 w-5' type="checkbox"></input>
+                                        <td className="border border-slate-300 ">
+                                            <input disabled={lower2a || cannotGrade2a} onChange={() => setUpper2a(!upper2a)} className='h-4 w-4' type="checkbox"></input>
                                             <label>{`2a>`}</label>
                                         </td>
                                     </tr>
@@ -195,35 +206,35 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
                             </table>
                         </td>
 
-                        <td className="border border-slate-300 p-1 text-center">
-                            <input disabled={upper2a || lower2a} onChange={() => setCannotGrade2a(!cannotGrade2a)} className='h-5 w-5' type="checkbox"></input>
+                        <td className="border border-slate-300 text-center">
+                            <input disabled={upper2a || lower2a} onChange={() => setCannotGrade2a(!cannotGrade2a)} className='h-4 w-4' type="checkbox"></input>
                         </td>
                     </tr>
 
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">5</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Difinite Venous Beading 6a</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table5_2} onChange={() => setTable5_1(!table5_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table5_1} onChange={() => setTable5_2(!table5_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">5</td>
+                        <td className="border border-slate-300 text-left px-4">Difinite Venous Beading 6a</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table5_2} onChange={() => setTable5_1(!table5_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table5_1} onChange={() => setTable5_2(!table5_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">6</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Intraretinal microvascular abnormalities (IRMA) 8a</td>
+                        <td className="border border-slate-300 text-center">6</td>
+                        <td className="border border-slate-300 text-left px-4">Intraretinal microvascular abnormalities (IRMA) 8a</td>
 
-                        <td className="border border-slate-300 p-1 flex space-x-2 justify-center">
+                        <td className="border border-slate-300 flex space-x-2 justify-center">
                             <div>
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td className="border border-slate-300 p-1" >
-                                                <input disabled={upper8a || cannotGrade8a} onChange={() => setLower8a(!lower8a)} className='h-5 w-5' type="checkbox" ></input>
+                                            <td className="border border-slate-300" >
+                                                <input disabled={upper8a || cannotGrade8a} onChange={() => setLower8a(!lower8a)} className='h-4 w-4' type="checkbox" ></input>
                                                 <label>{`<8a`}</label>
                                             </td>
 
-                                            <td className="border border-slate-300 p-1 ">
-                                                <input disabled={lower8a || cannotGrade8a} onChange={() => setUpper8a(!upper8a)} className='h-5 w-5' type="checkbox"></input>
+                                            <td className="border border-slate-300 ">
+                                                <input disabled={lower8a || cannotGrade8a} onChange={() => setUpper8a(!upper8a)} className='h-4 w-4' type="checkbox"></input>
                                                 <label>{`8a>`}</label>
                                             </td>
                                         </tr>
@@ -231,64 +242,64 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
                                 </table>
                             </div>
                         </td>
-                        <td className="border border-slate-300 p-1 text-center">
-                            <input disabled={upper8a || lower8a} onChange={() => setCannotGrade8a(!cannotGrade8a)} className='h-5 w-5' type="checkbox"></input>
+                        <td className="border border-slate-300 text-center">
+                            <input disabled={upper8a || lower8a} onChange={() => setCannotGrade8a(!cannotGrade8a)} className='h-4 w-4' type="checkbox"></input>
                         </td>
                     </tr>
 
 
                     <tr >
-                        <td className="border border-slate-300 p-1 text-center">7</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">New vessels (NV) or Fibrous Proliferation (FP)</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table7_2} onChange={() => setTable7_1(!table7_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table7_1} onChange={() => setTable7_2(!table7_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">7</td>
+                        <td className="border border-slate-300 text-left px-4">New vessels (NV) or Fibrous Proliferation (FP)</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table7_2} onChange={() => setTable7_1(!table7_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table7_1} onChange={() => setTable7_2(!table7_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">8</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Preretinal (PRH) or vitreous (VH) hemorrhage</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table8_2} onChange={() => setTable8_1(!table8_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table8_1} onChange={() => setTable8_2(!table8_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">8</td>
+                        <td className="border border-slate-300 text-left px-4">Preretinal (PRH) or vitreous (VH) hemorrhage</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table8_2} onChange={() => setTable8_1(!table8_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table8_1} onChange={() => setTable8_2(!table8_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">9</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Panretinal laser scars present</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table9_2} onChange={() => setTable9_1(!table9_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table9_1} onChange={() => setTable9_2(!table9_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">9</td>
+                        <td className="border border-slate-300 text-left px-4">Panretinal laser scars present</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table9_2} onChange={() => setTable9_1(!table9_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table9_1} onChange={() => setTable9_2(!table9_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">10</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Focal laser scars present</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table10_2} onChange={() => setTable10_1(!table10_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table10_1} onChange={() => setTable10_2(!table10_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">10</td>
+                        <td className="border border-slate-300 text-left px-4">Focal laser scars present</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table10_2} onChange={() => setTable10_1(!table10_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"><input disabled={table10_1} onChange={() => setTable10_2(!table10_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">11</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Hard exudates (HE) present anywhere</td>
-                        <td className="border border-slate-300 p-1 text-center"><input disabled={table11_2} onChange={() => setTable11_1(!table11_1)} className='h-5 w-5' type="checkbox"></input></td>
-                        <td className="border border-slate-300 p-1 text-center"  ><input disabled={table11_1} onChange={() => setTable11_2(!table11_2)} className='h-5 w-5' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center">11</td>
+                        <td className="border border-slate-300 text-left px-4">Hard exudates (HE) present anywhere</td>
+                        <td className="border border-slate-300 text-center"><input disabled={table11_2} onChange={() => setTable11_1(!table11_1)} className='h-4 w-4' type="checkbox"></input></td>
+                        <td className="border border-slate-300 text-center"  ><input disabled={table11_1} onChange={() => setTable11_2(!table11_2)} className='h-4 w-4' type="checkbox"></input></td>
                     </tr>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">12</td>
-                        <td className="border border-slate-300 p-1 text-left px-4"> HE close to center of macula</td>
+                        <td className="border border-slate-300 text-center">12</td>
+                        <td className="border border-slate-300 text-left px-4"> HE close to center of macula</td>
 
-                        <td className="border border-slate-300 p-1 flex space-x-2 justify-center">
+                        <td className="border border-slate-300 flex space-x-2 justify-center">
                             <div>
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td className="border border-slate-300 p-1">
-                                                <input disabled={lower1DD || cannotGradeDD} onChange={() => setLower2DD(!lower2DD)} className='h-5 w-5' type="checkbox" ></input>
+                                            <td className="border border-slate-300">
+                                                <input disabled={lower1DD || cannotGradeDD} onChange={() => setLower2DD(!lower2DD)} className='h-4 w-4' type="checkbox" ></input>
                                                 <label>{`<2DD`}</label>
                                             </td>
-                                            <td className="border border-slate-300 p-1 ">
-                                                <input disabled={lower2DD || cannotGradeDD} onChange={() => setLower1DD(!lower1DD)} className='h-5 w-5' type="checkbox"></input>
+                                            <td className="border border-slate-300 ">
+                                                <input disabled={lower2DD || cannotGradeDD} onChange={() => setLower1DD(!lower1DD)} className='h-4 w-4' type="checkbox"></input>
                                                 <label>{`<1DD`}</label>
                                             </td>
                                         </tr>
@@ -296,18 +307,18 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
                                 </table>
                             </div>
                         </td>
-                        <td className="border border-slate-300 p-1 text-center">
-                            <input disabled={lower1DD || lower2DD} onChange={() => setCannotGradeDD(!cannotGradeDD)} className='h-5 w-5' type="checkbox"></input>
+                        <td className="border border-slate-300 text-center">
+                            <input disabled={lower1DD || lower2DD} onChange={() => setCannotGradeDD(!cannotGradeDD)} className='h-4 w-4' type="checkbox"></input>
                         </td>
                     </tr>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">13</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Other referrable conditions in either eye:</td>
+                        <td className="border border-slate-300 text-center">13</td>
+                        <td className="border border-slate-300 text-left px-4">Other referrable conditions in either eye</td>
 
-                        <td className="border border-slate-300 p-1 text-center">
+                        <td className="border border-slate-300 text-center">
                             {/* Need Fix */}
-                            <select onChange={(e) => setSelectOther(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            <select value={selectOther} onChange={(e) => setSelectOther(parseInt(e.target.value))} className='w-full border border-slate-300 focus:outline-none'>
                                 <option value={1}>Cataract</option>
                                 <option value={2}>Glaucoma</option>
                                 <option value={3}>Occlusion</option>
@@ -315,34 +326,34 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
                                 <option value={0}>Other</option>
                             </select>
                         </td>
-                        <td className="border border-slate-300 p-1 text-center">
+                        <td className="border border-slate-300 text-center">
                         </td>
                     </tr>
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">14</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">Side </td>
+                        <td className="border border-slate-300 text-center">14</td>
+                        <td className="border border-slate-300 text-left px-4">Side </td>
 
-                        <td className="border border-slate-300 p-1 text-center">
+                        <td className="border border-slate-300 text-center">
                             {/* Need Fix */}
-                            <select onChange={(e) => setSelectEyeSide(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                            <select value={selectEyeSide} onChange={(e) => setSelectEyeSide(parseInt(e.target.value))} className='w-full border border-slate-300 focus:outline-none'>
                                 <option value={2}>None</option>
                                 <option value={0}>Right</option>
                                 <option value={1}>Left</option>
                             </select>
                         </td>
-                        <td className="border border-slate-300 p-1 text-center">
+                        <td className="border border-slate-300 text-center">
                         </td>
                     </tr>
 
 
                     <tr>
-                        <td className="border border-slate-300 p-1 text-center">15</td>
-                        <td className="border border-slate-300 p-1 text-left px-4">EyePACS  Grading Level</td>
+                        <td className="border border-slate-300 text-center">15</td>
+                        <td className="border border-slate-300 text-left px-4">EyePACS  Grading Level</td>
 
                         {/* Need Fix */}
-                        <td className="border border-slate-300 p-1 text-center">
-                            <select onChange={(e) => setSelectTable14(parseInt(e.target.value))} className='w-full border border-slate-300 p-1 focus:outline-none'>
+                        <td className="border border-slate-300 text-center">
+                            <select value={selectTable14} onChange={(e) => setSelectTable14(parseInt(e.target.value))} className='w-full border border-slate-300 focus:outline-none'>
                                 <option value={0}>No retinopathy</option>
                                 <option value={1}>Mild NPDR </option>
                                 <option value={2}>Moderate NPDR</option>
@@ -353,7 +364,7 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
                                 <option value={7}>Macula edema, clinically significant</option>
                             </select>
                         </td>
-                        <td className="border border-slate-300 p-1 text-center">
+                        <td className="border border-slate-300 text-center">
                         </td>
                     </tr>
 
@@ -361,6 +372,10 @@ export const EyeForm = ({ comments, eye_photo_id }) => {
 
                 </tbody>
             </table>
+            {/* comments */}
+            <div>
+                <textarea onChange={(e) => setComments(e.target.value)} className='w-full h-28 border border-black p-2' placeholder='Comments'></textarea>
+            </div>
 
             {/* Error */}
             {error &&
