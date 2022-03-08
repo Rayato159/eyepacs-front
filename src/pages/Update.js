@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 
 // Components
 import { EyeFormUpdate } from '../components/EyeForm/EyeFormUpdate'
+import { EyePhoto } from '../components/EyeForm/EyePhoto'
 
 // Services
 import { getEyePhotoById } from '../services/eyeServices'
-import { getComment } from '../services/commentServices'
 import NavBar from '../components/Navbar/NavBar';
 
 export const Update = () => {
@@ -17,9 +17,6 @@ export const Update = () => {
     const [eye, setEye] = useState(null)
     const [error, setError] = useState("")
 
-    // Comments
-    const [comments, setComments] = useState("")
-
     const fetchEye = async (eye_photo_id) => {
         try {
             const res = await getEyePhotoById(eye_photo_id)
@@ -29,18 +26,8 @@ export const Update = () => {
         }
     }
 
-    const fetchComment = async (eye_photo_id) => {
-        try {
-            const res = await getComment(eye_photo_id)
-            setComments(res.description)
-        } catch(e) {
-            setError(e.message)
-        }
-    }
-
     useEffect(() => {
         fetchEye(eye_photo_id)
-        fetchComment(eye_photo_id)
     }, [])
     
     return (
@@ -52,29 +39,13 @@ export const Update = () => {
             <div className='flex items-center justify-center h-screen w-full space-x-32'>
 
                 <div className='flex flex-col space-y-4'>
-                    {/* Image ID */}
-                    {eye &&
-                        <div className='bg-blue-400 p-2 rounded-lg'>
-                            <div className='flex justify-center text-2xl font-bold text-back'>
-                                {eye.eye_photo_id}
-                            </div>
-                        </div>
-                    }
                     {/* Image show */}
                     {eye &&
-                        <img
-                            className='w-96 h-auto'
-                            src={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`}
-                        />
+                        <EyePhoto props={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`}/>
                     }
-                    {/* comments */}
-                    <div>
-                        <textarea value={comments} onChange={(e) => setComments(e.target.value)} className='w-96 h-auto border border-black p-2'></textarea>
-                    </div>
                 </div>
                 <div>
                     <EyeFormUpdate
-                        comments={comments}
                         eye_photo_id={eye_photo_id}
                     />
                 </div>
