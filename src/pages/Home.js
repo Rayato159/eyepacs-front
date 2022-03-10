@@ -15,7 +15,7 @@ import {
 
 // Icons
 import { MdUpdate } from 'react-icons/md'
-import { AiOutlineDelete, AiOutlineFileAdd } from 'react-icons/ai'
+import { AiOutlineDelete, AiOutlineFileAdd, AiOutlineSearch } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { TiArrowSortedUp, TiArrowSortedDown } from 'react-icons/ti'
 
@@ -134,6 +134,15 @@ export const Home = () => {
             statusSort,
             dateSort,
         )
+    }, [name])
+
+    useEffect(() => {
+        fetchEyes(
+            name,
+            status,
+            statusSort,
+            dateSort,
+        )
     }, [deleteOne])
 
     const displayEyePhotos = eyes
@@ -180,7 +189,17 @@ export const Home = () => {
                         <thead className='bg-gray-50'>
                             <tr className='bg-trustworthy-300'>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>No.</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Photo ID</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>
+                                    <form className='flex justify-center items-center space-x-2'>
+                                        <div>
+                                            PHOTO ID
+                                        </div>
+                                        <div className='relative flex justify-end items-center'>
+                                            <input onChange={(e) => setName(e.target.value)} type="text" className='p-1 px-3 rounded-full focus:outline-none'/>
+                                            <AiOutlineSearch className='absolute mr-2 h-6 w-6 bg-white'/>
+                                        </div>
+                                    </form>
+                                </td>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>
                                     <div className='flex justify-center items-center space-x-2'>
                                         <div>
