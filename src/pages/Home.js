@@ -180,7 +180,7 @@ export const Home = () => {
     return (
         <div className='w-full'>
             <div>
-                <NavBar/>
+                <NavBar props={(value) => setName(value)}/>
             </div>
 
             <div className='align-middle inline-block w-full '>
@@ -189,17 +189,7 @@ export const Home = () => {
                         <thead className='bg-gray-50'>
                             <tr className='bg-trustworthy-300'>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>No.</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>
-                                    <form className='flex justify-center items-center space-x-2'>
-                                        <div>
-                                            PHOTO ID
-                                        </div>
-                                        <div className='relative flex justify-end items-center'>
-                                            <input onChange={(e) => setName(e.target.value)} type="text" className='p-1 px-3 rounded-full focus:outline-none'/>
-                                            <AiOutlineSearch className='absolute mr-2 h-6 w-6 bg-white'/>
-                                        </div>
-                                    </form>
-                                </td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>PHOTO ID</td>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>
                                     <div className='flex justify-center items-center space-x-2'>
                                         <div>

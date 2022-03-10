@@ -5,7 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../features/userSlice'
 
-export default function NavBar() {
+// Icons
+import { AiOutlineSearch } from 'react-icons/ai'
+
+export default function NavBar({ props }) {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -20,7 +23,11 @@ export default function NavBar() {
     return (
         <nav className="flex justify-end bg-teal-500 p-4">
             <div className="w-full flex justify-end">
-                <div className=" ">
+                <div className="flex items-center">
+                    <div className='relative flex justify-end items-center mr-10'>
+                        <input onChange={(e) => props(e.target.value)} type="text" className='p-1 px-3 rounded-full focus:outline-none' placeholder='PHOTO ID' />
+                        <AiOutlineSearch className='absolute mr-2 h-6 w-6 bg-white'/>
+                    </div>
                     <a href="/home" className=" text-teal-200 hover:text-white font-medium text-base mr-10">
                         HOME
                     </a>
