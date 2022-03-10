@@ -24,6 +24,9 @@ export const Home = () => {
 
     // Eye state
     const [name, setName] = useState("")
+    const [status, setStatus] = useState("")
+    const [statusSort, setStatusSort] = useState("")
+    const [dateSort, setDateSort] = useState("")
     const [eyes, setEyes] = useState([])
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState("")
@@ -74,10 +77,20 @@ export const Home = () => {
         setPageNumber(selected)
     }
 
-    const fetchEyes = async (name) => {
+    const fetchEyes = async (
+        name,
+        status,
+        statusSort,
+        dateSort,
+    ) => {
         setIsPending(true)
         try {
-            const res = await getEyes(name)
+            const res = await getEyes(
+                name,
+                status,
+                statusSort,
+                dateSort,
+            )
             setEyes(res)
             setIsPending(false)
         } catch (e) {
@@ -87,11 +100,21 @@ export const Home = () => {
     }
 
     useEffect(() => {
-        fetchEyes(name)
+        fetchEyes(
+            name,
+            status,
+            statusSort,
+            dateSort,
+        )
     }, [deleteAll])
 
     useEffect(() => {
-        fetchEyes(name)
+        fetchEyes(
+            name,
+            status,
+            statusSort,
+            dateSort,
+        )
     }, [deleteOne])
 
     const displayEyePhotos = eyes

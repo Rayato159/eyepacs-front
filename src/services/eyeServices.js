@@ -6,10 +6,16 @@ const eyesController = axios.create({
 
 const accessToken = { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` }
 
-export const getEyes = (name) => {
+export const getEyes = (name, status, status_sort, date_sort) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const res = await eyesController.get(`?name=${name? name: ''}`)
+            const res = await eyesController.get(
+                `?name=${name? name: ''}
+                ${status? `&status=${status}`:``}
+                ${status_sort? `&status_sort=${status_sort}`:``}
+                ${date_sort? `&date_sort=${date_sort}`:``}
+                `
+            )
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)
