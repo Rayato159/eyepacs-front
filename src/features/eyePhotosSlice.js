@@ -11,6 +11,10 @@ export const eyePhotosSlice = createSlice({
       setEyesCurrent(state, { payload }) {
         state.eyes = payload
       },
+
+      nextPage(state) {
+        
+      }
   },
 })
 

@@ -29,7 +29,7 @@ import {
 } from '../../services/tableServices'
 import { createComment } from '../../services/commentServices'
 
-export const EyeForm = ({ eye_photo_id }) => {
+export const EyeForm = ({ onNextPage, onLastPage, eye_photo_id }) => {
 
     const navigate = useNavigate()
 
@@ -141,6 +141,22 @@ export const EyeForm = ({ eye_photo_id }) => {
 
     return (
         <div className='flex flex-col space-y-4'>
+            <div className='flex justify-between'>
+                <div>
+                    <button onClick={() => onLastPage()} className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full w-36'>
+                        <div className='font-bold text-white'>
+                            Back
+                        </div>
+                    </button>
+                </div>
+                <div>
+                    <button onClick={() => onNextPage()} className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full w-36'>
+                        <div className='font-bold text-white'>
+                            Next
+                        </div>
+                    </button>
+                </div>
+            </div>
             {/* Image ID */}
             {eye_photo_id &&
                 <div className='bg-blue-400 p-2 rounded-lg'>
@@ -389,24 +405,26 @@ export const EyeForm = ({ eye_photo_id }) => {
                 </div>
             }
             <div className='flex justify-end space-x-4'>
-                <button onClick={onClearHandle} className='py-2 px-4 bg-blue-400 hover:bg-blue-500 rounded-full w-36'>
-                    <div className='font-bold text-white'>
-                        Clear All
-                    </div>
-                </button>
-                {isPending ?
-                    <button disabled className='py-2 px-4 disabled:bg-trustworthy-500 rounded-full'>
+                <div className='space-x-4'>
+                    <button onClick={onClearHandle} className='py-2 px-4 bg-blue-400 hover:bg-blue-500 rounded-full w-36'>
                         <div className='font-bold text-white'>
-                            LOADING...
+                            Clear All
                         </div>
                     </button>
-                    :
-                    <button onClick={onSubmitHandle} className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full w-36'>
-                        <div className='font-bold text-white'>
-                            Submit
-                        </div>
-                    </button>
-                }
+                    {isPending ?
+                        <button disabled className='py-2 px-4 disabled:bg-trustworthy-500 rounded-full'>
+                            <div className='font-bold text-white'>
+                                LOADING...
+                            </div>
+                        </button>
+                        :
+                        <button onClick={onSubmitHandle} className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full w-36'>
+                            <div className='font-bold text-white'>
+                                Submit
+                            </div>
+                        </button>
+                    }
+                </div>
             </div>
         </div>
     )

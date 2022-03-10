@@ -15,8 +15,9 @@ import {
 
 // Icons
 import { MdUpdate } from 'react-icons/md'
-import { AiOutlineDelete, AiOutlineFileAdd } from 'react-icons/ai'
+import { AiOutlineDelete, AiOutlineFileAdd, AiOutlineSearch } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import { TiArrowSortedUp, TiArrowSortedDown } from 'react-icons/ti'
 
 export const Home = () => {
 
@@ -25,8 +26,8 @@ export const Home = () => {
     // Eye state
     const [name, setName] = useState("")
     const [status, setStatus] = useState("")
-    const [statusSort, setStatusSort] = useState("")
-    const [dateSort, setDateSort] = useState("")
+    const [statusSort, setStatusSort] = useState("DESC")
+    const [dateSort, setDateSort] = useState("DESC")
     const [eyes, setEyes] = useState([])
     const [isPending, setIsPending] = useState(false)
     const [error, setError] = useState("")
@@ -115,6 +116,33 @@ export const Home = () => {
             statusSort,
             dateSort,
         )
+    }, [dateSort])
+
+    useEffect(() => {
+        fetchEyes(
+            name,
+            status,
+            statusSort,
+            dateSort,
+        )
+    }, [statusSort])
+
+    useEffect(() => {
+        fetchEyes(
+            name,
+            status,
+            statusSort,
+            dateSort,
+        )
+    }, [name])
+
+    useEffect(() => {
+        fetchEyes(
+            name,
+            status,
+            statusSort,
+            dateSort,
+        )
     }, [deleteOne])
 
     const displayEyePhotos = eyes
@@ -152,7 +180,7 @@ export const Home = () => {
     return (
         <div className='w-full'>
             <div>
-                <NavBar/>
+                <NavBar props={(value) => setName(value)}/>
             </div>
 
             <div className='align-middle inline-block w-full '>
@@ -161,9 +189,35 @@ export const Home = () => {
                         <thead className='bg-gray-50'>
                             <tr className='bg-trustworthy-300'>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>No.</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Photo ID</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Created</td>
-                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Status</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>PHOTO ID</td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>
+                                    <div className='flex justify-center items-center space-x-2'>
+                                        <div>
+                                            Created
+                                        </div>
+                                        <button>
+                                            {dateSort === 'DESC'?
+                                                <TiArrowSortedDown onClick={() => setDateSort("ASC")} className='h-5 w-5'/>
+                                                :
+                                                <TiArrowSortedUp onClick={() => setDateSort("DESC")} className='h-5 w-5'/>
+                                            }
+                                        </button>
+                                    </div>
+                                </td>
+                                <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>
+                                    <div className='flex justify-center items-center space-x-2'>
+                                        <div>
+                                            Status
+                                        </div>
+                                        <button>
+                                            {statusSort === 'DESC'?
+                                                <TiArrowSortedDown onClick={() => setStatusSort("ASC")} className='h-5 w-5'/>
+                                                :
+                                                <TiArrowSortedUp onClick={() => setStatusSort("DESC")} className='h-5 w-5'/>
+                                            }
+                                        </button>
+                                    </div>
+                                </td>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Create</td>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Update</td>
                                 <td className='px-6 py-3 text-center text-base font-medium text-black uppercase'>Delete</td>
