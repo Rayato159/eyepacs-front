@@ -69,13 +69,13 @@ export const Create = () => {
                     <div className='flex flex-col space-y-4'>
                         {/* Image show */}
                         {eye &&
-                            <EyePhoto props={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`}/>
+                            <EyePhoto props={`${process.env.REACT_APP_BASE_URL}/eye-photos/image/${eye.eye_photo_id}`}/>
                         }
                     </div>
                     <div>
                         <EyeForm
-                            onNextPage={() => window.location.href=`http://localhost:4181/home/create/${eyesMany[currentEyeIndex + 1].eye_photo_id}`}
-                            onLastPage={() => window.location.href=`http://localhost:4181/home/create/${eyesMany[currentEyeIndex - 1].eye_photo_id}`}
+                            onNextPage={() => window.location.href=`/home/create/${eyesMany[currentEyeIndex + 1].eye_photo_id}`}
+                            onLastPage={() => window.location.href=`/home/create/${eyesMany[currentEyeIndex - 1].eye_photo_id}`}
                             eye_photo_id={eye_photo_id}
                         />
                     </div>

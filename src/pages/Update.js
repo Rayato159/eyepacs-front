@@ -41,7 +41,7 @@ export const Update = () => {
                 <div className='flex flex-col space-y-4'>
                     {/* Image show */}
                     {eye &&
-                        <EyePhoto props={`http://localhost:3000/api/eye-photos/image/${eye.eye_photo_id}`}/>
+                        <EyePhoto props={`${process.env.REACT_APP_BASE_URL}/eye-photos/image/${eye.eye_photo_id}`}/>
                     }
                 </div>
                 <div>

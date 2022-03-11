@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const commentsController = axios.create({
-    baseURL: 'http://localhost:3000/api/comments'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/comments`
 })
 
 const accessToken = { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` }
