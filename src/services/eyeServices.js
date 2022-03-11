@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const eyesController = axios.create({
-    baseURL: 'http://localhost:3000/api/eye-photos'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/eye-photos`
 })
 
 const accessToken = { "Authorization": `Bearer ${localStorage.getItem("accessToken")}` }
@@ -93,8 +93,8 @@ export const deleteEyePhotoOne = (eye_photo_id) => {
 export const exportEyeData = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            const res = await axios.get('http://localhost:3000/api/eye-data')
-            window.open('http://localhost:3000/api/eye-data')
+            const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/eye-data`)
+            window.open(`${process.env.REACT_APP_BASE_URL}/eye-data`)
             resolve(res.data)
         } catch(e) {
             reject(e.response.data)

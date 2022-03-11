@@ -2,59 +2,59 @@ import axios from "axios";
 
 // Controller
 const table1Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-1'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-1`
 })
 
 const table2Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-2'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-2`
 })
 
 const table3Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-3'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-3`
 })
 
 const table4Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-4'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-4`
 })
 
 const table5Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-5'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-5`
 })
 
 const table6Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-6'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-6`
 })
 
 const table7Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-7'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-7`
 })
 
 const table8Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-8'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-8`
 })
 
 const table9Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-9'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-9`
 })
 
 const table10Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-10'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-10`
 })
 
 const table11Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-11'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-11`
 })
 
 const table12Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-12'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-12`
 })
 
 const table13Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-13'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-13`
 })
 
 const table14Controller = axios.create({
-    baseURL: 'http://localhost:3000/api/table-14'
+    baseURL: `${process.env.REACT_APP_BASE_URL}/table-14`
 })
 
 
@@ -681,7 +681,7 @@ export const deleteAllTable = (eye_photo_id) => {
     return new Promise(async (resolve, reject) => {
         try {
             console.log(eye_photo_id)
-            const res = await axios.delete(`http://localhost:3000/api/delete-all-table/${eye_photo_id}`, {
+            const res = await axios.delete(`${process.env.REACT_APP_BASE_URL}/delete-all-table/${eye_photo_id}`, {
                 headers: accessToken
             })
             resolve(res.data)
