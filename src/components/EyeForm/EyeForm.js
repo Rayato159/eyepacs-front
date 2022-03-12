@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 // Icons
 import { BiErrorCircle } from 'react-icons/bi'
@@ -29,10 +28,7 @@ import {
 } from '../../services/tableServices'
 import { createComment } from '../../services/commentServices'
 
-export const EyeForm = ({ onNextPage, onLastPage, eye_photo_id }) => {
-
-    const navigate = useNavigate()
-
+export const EyeForm = ({ currentEyeIndexIn, eyesManyIn, onNextPage, onLastPage, eye_photo_id }) => {
     // Comments
     const [comments, setComments] = useState("")
 
@@ -96,7 +92,7 @@ export const EyeForm = ({ onNextPage, onLastPage, eye_photo_id }) => {
     const [selectOther, setSelectOther] = useState(0)
     const [selectEyeSide, setSelectEyeSide] = useState(2)
     const [selectTable14, setSelectTable14] = useState(0)
-
+    
     // Clear state
     const onClearHandle = () => {
         window.location.reload()
@@ -126,18 +122,13 @@ export const EyeForm = ({ onNextPage, onLastPage, eye_photo_id }) => {
             setIsPending(false)
             setError("")
             setIsCompleted(true)
+            window.location.href=`/home/create/${eyesManyIn[currentEyeIndexIn + 1].eye_photo_id}`
         } catch (e) {
             const deleteTable = await deleteAllTable(eye_photo_id)
             setError(e.message)
             setIsPending(false)
         }
     }
-
-    useEffect(() => {
-        if (isCompleted) {
-            navigate('/home')
-        }
-    }, [isCompleted])
 
     return (
         <div className='flex flex-col space-y-4'>
@@ -418,9 +409,9 @@ export const EyeForm = ({ onNextPage, onLastPage, eye_photo_id }) => {
                             </div>
                         </button>
                         :
-                        <button onClick={onSubmitHandle} className='py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full w-36'>
+                        <button onClick={onSubmitHandle} disabled={isCompleted} className={`${isCompleted? 'disabled:bg-trustworthy-500': ''} py-2 px-4 bg-trustworthy-400 hover:bg-trustworthy-500 rounded-full w-36`}>
                             <div className='font-bold text-white'>
-                                Submit
+                                {isCompleted? 'Done':'Submit' }
                             </div>
                         </button>
                     }

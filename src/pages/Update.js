@@ -32,11 +32,11 @@ export const Update = () => {
     
     return (
 
-        <div className='aspect-video'>
+        <div className='flex flex-col'>
             <div>
                 <NavBar />
             </div>
-            <div className='flex items-center justify-center h-screen w-full space-x-32'>
+            <div className='flex items-center justify-center h-max w-full space-x-32 p-8'>
 
                 <div className='flex flex-col space-y-4'>
                     {/* Image show */}

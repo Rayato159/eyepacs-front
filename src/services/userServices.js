@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const userController = axios.create({
-    baseURL: `${process.env.REACT_APP_BASE_URL}/api`
+    baseURL: `${process.env.REACT_APP_BASE_URL}`
 })
 
 export const login = async (username, password) => {
