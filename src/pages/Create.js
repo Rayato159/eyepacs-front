@@ -61,11 +61,11 @@ export const Create = () => {
 
     if(eye) {
         return (
-            <div className='aspect-video'>
+            <div className='flex flex-col'>
                 <div>
                     <NavBar />
                 </div>
-                <div className='flex items-center justify-center h-screen w-full space-x-32'>
+                <div className='flex items-center justify-center h-max w-full space-x-32 p-8'>
                     <div className='flex flex-col space-y-4'>
                         {/* Image show */}
                         {eye &&
@@ -74,6 +74,8 @@ export const Create = () => {
                     </div>
                     <div>
                         <EyeForm
+                            currentEyeIndexIn={currentEyeIndex}
+                            eyesManyIn={eyesMany}
                             onNextPage={() => window.location.href=`/home/create/${eyesMany[currentEyeIndex + 1].eye_photo_id}`}
                             onLastPage={() => window.location.href=`/home/create/${eyesMany[currentEyeIndex - 1].eye_photo_id}`}
                             eye_photo_id={eye_photo_id}

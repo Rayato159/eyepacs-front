@@ -41,8 +41,5 @@ export default function NavBar({ props }) {
                 </div>
             </div>
         </nav>
-
-
-
     )
 }
