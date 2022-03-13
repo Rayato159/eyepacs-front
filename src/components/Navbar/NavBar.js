@@ -26,7 +26,7 @@ export default function NavBar({ props }) {
                 <div className="flex items-center">
                     <div className='relative flex justify-end items-center mr-10'>
                         <input onChange={(e) => props(e.target.value)} type="text" className='p-1 px-3 rounded-full focus:outline-none' placeholder='PHOTO ID' />
-                        <AiOutlineSearch className='absolute mr-2 h-6 w-6 bg-white'/>
+                        <AiOutlineSearch className='absolute mr-2 h-6 w-6'/>
                     </div>
                     <a href="/home" className=" text-teal-200 hover:text-white font-medium text-base mr-10">
                         HOME
